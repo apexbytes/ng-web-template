@@ -1,0 +1,205 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/drone_survey.jpg" alt="Aerial security drone operations" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Our Services</div>
+      <h1>Aerial Security<br><em>Solutions</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <a href="index.html#services">Services</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Aerial Security Solutions</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE INTRO ===== -->
+<section class="svc-intro">
+  <div class="container">
+    <div>
+      <div class="lbl">Security Solutions</div>
+      <h2 class="svc-intro-h2">Elevated Intelligence for<br>Proactive Asset Protection</h2>
+      <p class="svc-intro-p">GeoMapping Pty Ltd delivers advanced aerial security solutions designed for large industrial sites, remote assets, and critical infrastructure. Our service leverages drone-based aerial intelligence integrated with ground-based personnel to provide real-time insight and early threat identification.</p>
+      <p class="svc-intro-p">By adding an elevated layer of oversight, we help security teams reduce blind spots, improve response times, and maintain operational confidence in high-risk environments across South Africa.</p>
+      <ul class="about-checks">
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Real-time aerial monitoring and early threat detection
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Seamless integration with existing ground-based security teams
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Intelligent protection for mining, industrial, and public assets
+        </li>
+      </ul>
+      <div class="about-foot" style="margin-top: 32px;">
+        <a href="contact.html" class="btn-fill">Enquire Now <i class="ph ph-arrow-right"></i></a>
+        <a href="contact.html" class="btn-line">Contact Us <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="svc-intro-vis">
+      <img src="images/aerial_survey.jpg" alt="Drone security monitoring" class="svc-intro-img">
+      <div class="svc-intro-badge">
+        <i class="ph ph-shield-check"></i>
+        <small>Security<br>Experts</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT THIS SERVICE COVERS ===== -->
+<section class="covers">
+  <div class="container">
+    <div class="covers-hd">
+      <div class="lbl">Service Scope</div>
+      <h2>What This Service Covers</h2>
+    </div>
+    <div class="covers-grid">
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-eye"></i></div>
+        <div class="covers-num">01</div>
+        <h4>Crime Element Detection</h4>
+        <p>Monitoring and deterrence of criminal activity across large or hard-to-access areas, providing security teams with an early warning system.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-users-three"></i></div>
+        <div class="covers-num">02</div>
+        <h4>Integration of Personnel</h4>
+        <p>Enhancing situational awareness for on-site security teams, allowing for better coordination during routine patrols or live incidents.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-cpu"></i></div>
+        <div class="covers-num">03</div>
+        <h4>Systems & Device Deployment</h4>
+        <p>Expert deployment of specialized drone platforms and sensors that integrate directly into your existing security monitoring frameworks.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-car"></i></div>
+        <div class="covers-num">04</div>
+        <h4>Traffic & Route Management</h4>
+        <p>Analysis of traffic flow and incident detection for operational sites, ensuring safety and efficiency along transport and logistics routes.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-factory"></i></div>
+        <div class="covers-num">05</div>
+        <h4>Infrastructure Oversight</h4>
+        <p>Regular aerial inspections of critical infrastructure to identify risks, damage, or unauthorized access before situations escalate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CLIENTS CHOOSE GEOMAPPING ===== -->
+<section class="why">
+  <div class="container">
+    <div class="why-img-w">
+      <img src="images/pexels-iwashere-15109992.jpg" alt="Security surveillance">
+      <div class="why-badge">
+        <strong>100%</strong>
+        Situational<br>Awareness
+      </div>
+    </div>
+    <div class="why-cont">
+      <div class="lbl">Why Choose Us</div>
+      <h2>Why Choose Our<br>Security Solutions</h2>
+      <div class="why-list">
+        <div class="why-item" [class.active]="activeWhyItem() === 0" (click)="activeWhyItem.set(0)">
+          <div class="why-n">01</div>
+          <div class="why-txt">
+            <h4>Elevated Perspective</h4>
+            <p>Drones provide a view that fixed ground-based cameras and patrols cannot achieve, covering vast areas in minutes and eliminating traditional blind spots.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 1" (click)="activeWhyItem.set(1)">
+          <div class="why-n">02</div>
+          <div class="why-txt">
+            <h4>Improved Response Times</h4>
+            <p>Aerial intelligence allows for faster identification of threats, enabling security teams to respond more effectively and with better situational data.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 2" (click)="activeWhyItem.set(2)">
+          <div class="why-n">03</div>
+          <div class="why-txt">
+            <h4>Intelligent Layered Protection</h4>
+            <p>We provide a smart layer of oversight that enhances existing security protocols, improving overall safety and operational confidence for site owners.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 3" (click)="activeWhyItem.set(3)">
+          <div class="why-n">04</div>
+          <div class="why-txt">
+            <h4>Seamless System Integration</h4>
+            <p>Our solutions are designed to work alongside your current security infrastructure, augmenting your team's capabilities without disrupting established workflows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED SERVICES ===== -->
+<section class="rel-svcs">
+  <div class="container">
+    <div class="rel-svcs-hd">
+      <div class="lbl">Explore More</div>
+      <h2>Related Services</h2>
+    </div>
+    <div class="rel-grid">
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-drone"></i></div>
+        <h4>Aerial Survey &amp; GIS</h4>
+        <p>High-resolution drone photogrammetry, LiDAR scanning, and GIS spatial analysis delivering precise geospatial intelligence.</p>
+        <a href="aerial-survey-gis.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-hard-hat"></i></div>
+        <h4>Mining Surveying &amp; Planning</h4>
+        <p>Professional mining surveying and planning solutions supporting safe, efficient, and compliant operations across South Africa.</p>
+        <a href="msp.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-ruler"></i></div>
+        <h4>Engineering &amp; Construction Survey</h4>
+        <p>Setting-out, as-built, and deformation surveys supporting accurate project delivery from initial design to final completion.</p>
+        <a href="engineering-construction.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-users-three"></i></div>
+        <h4>Community Programs</h4>
+        <p>Skills development, geospatial training initiatives, and environmental awareness programmes supporting local communities.</p>
+        <a href="community-programs.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-ban">
+  <div class="cta-ban-bg">
+    <img src="images/pexels-davidelocatelli-2383650.jpg" alt="GeoMapping security operations">
+  </div>
+  <div class="cta-ban-ov"></div>
+  <div class="container cta-ban-inner">
+    <div class="lbl">Get Started</div>
+    <h2>Protect Your Assets with <em>Aerial Intelligence</em></h2>
+    <a href="contact.html" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+      Enquire Now <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>

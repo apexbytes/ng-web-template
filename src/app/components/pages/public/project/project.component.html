@@ -1,0 +1,74 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  @if (project()?.imageUrl) {
+    <img [src]="project()!.imageUrl!" alt="" class="page-banner-bg">
+  } @else {
+    <img src="images/aerial_survey.jpg" alt="" class="page-banner-bg">
+  }
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Projects</div>
+      <h1>{{ project()?.title ?? 'Project' }}</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Projects</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECT CONTENT ===== -->
+@if (projectResource.isLoading()) {
+  <section class="proj-detail">
+    <div class="container">
+      <div class="proj-loading">
+        <div class="proj-loading-img"></div>
+        <div class="proj-loading-body">
+          <div class="post-loading-bar short"></div>
+          <div class="post-loading-bar"></div>
+          <div class="post-loading-bar medium"></div>
+          <div class="post-loading-bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+} @else if (project()) {
+  <section class="proj-detail">
+    <div class="container">
+      <div class="proj-detail-grid">
+
+        <!-- Image column -->
+        @if (project()!.imageUrl) {
+          <div class="proj-detail-img-w">
+            <img [src]="project()!.imageUrl!" [alt]="project()!.title" class="proj-detail-img">
+          </div>
+        }
+
+        <!-- Info column -->
+        <div class="proj-detail-body" [class.full-width]="!project()!.imageUrl">
+          @if (project()!.tag) {
+            <div class="proj-detail-tag">{{ tagLabel(project()!.tag) }}</div>
+          }
+          <h2>{{ project()!.title }}</h2>
+          <div class="proj-detail-meta">
+            <span><i class="ph ph-calendar"></i> {{ project()!.createdAt | date:'MMMM d, y' }}</span>
+          </div>
+          <div class="proj-detail-content" [innerHTML]="project()!.content"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="proj-detail">
+    <div class="container">
+      <div class="proj-not-found">
+        <h2>Project not found</h2>
+        <p>The project you are looking for does not exist or has been removed.</p>
+        <a routerLink="/" class="btn-fill" style="margin-top:24px;display:inline-flex;">Back to Home <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+}

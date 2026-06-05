@@ -1,0 +1,69 @@
+<h2 class="auth-title">Welcome Back</h2>
+<p class="auth-subtitle">Sign in to your GeoMapping admin portal to manage content and operations.</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate autocomplete="on">
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="login-email">Email Address</label>
+    <input
+      type="email"
+      id="login-email"
+      formControlName="email"
+      placeholder="name@company.com"
+      autocomplete="email"
+      [class.is-invalid]="form.controls.email.invalid && form.controls.email.touched"
+    >
+    @if (form.controls.email.touched) {
+      @if (form.controls.email.hasError('required')) {
+        <span class="field-error" role="alert">Email address is required.</span>
+      } @else if (form.controls.email.hasError('email')) {
+        <span class="field-error" role="alert">Enter a valid email address.</span>
+      }
+    }
+  </div>
+
+  <!-- Password -->
+  <div class="form-group">
+    <div class="label-row">
+      <label for="login-password">Password</label>
+      <a routerLink="/auth/forgot-password" class="form-link">Forgot password?</a>
+    </div>
+    <div class="input-wrap">
+      <input
+        [type]="showPassword() ? 'text' : 'password'"
+        id="login-password"
+        formControlName="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+        [class.is-invalid]="form.controls.password.invalid && form.controls.password.touched"
+      >
+      <button
+        type="button"
+        class="pw-toggle"
+        (click)="togglePassword()"
+        [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+      >
+        <i [class]="showPassword() ? 'ph ph-eye-slash' : 'ph ph-eye'"></i>
+      </button>
+    </div>
+    @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+      <span class="field-error" role="alert">Password is required.</span>
+    }
+  </div>
+
+  <!-- Submit -->
+  <button
+    type="submit"
+    class="auth-submit"
+    [disabled]="loading()"
+    [attr.aria-busy]="loading()"
+  >
+    @if (loading()) {
+      <i class="ph ph-circle-notch spin" aria-hidden="true"></i> Signing in…
+    } @else {
+      Sign In <i class="ph ph-sign-in" aria-hidden="true"></i>
+    }
+  </button>
+
+</form>

@@ -1,0 +1,205 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/communinty_programs.jpg" alt="Community programs" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Social Responsibility</div>
+      <h1>Community<br><em>Programs</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <a href="index.html#services">Services</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Community Programs</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE INTRO ===== -->
+<section class="svc-intro">
+  <div class="container">
+    <div>
+      <div class="lbl">Our Commitment</div>
+      <h2 class="svc-intro-h2">Creating Long-Term Value<br>Beyond Data Delivery</h2>
+      <p class="svc-intro-p">At GeoMapping Pty Ltd, we view geospatial work as extending far beyond data delivery into the communities where our projects operate. Our community programs are designed to create meaningful, long-term value by supporting the people, skills, and environments connected to our technical work.</p>
+      <p class="svc-intro-p">We believe that technical excellence should always be matched with social responsibility. By engaging with local stakeholders, we ensure that our presence contributes positively to sustainable development and social growth.</p>
+      <ul class="about-checks">
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Sustainable initiatives linked to mining and infrastructure projects
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Local skills development and geospatial knowledge sharing
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Transparent and collaborative stakeholder engagement
+        </li>
+      </ul>
+      <div class="about-foot" style="margin-top: 32px;">
+        <a href="contact.html" class="btn-fill">Enquire Now <i class="ph ph-arrow-right"></i></a>
+        <a href="contact.html" class="btn-line">Contact Us <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="svc-intro-vis">
+      <img src="images/communinty_programs.jpg" alt="Community engagement" class="svc-intro-img">
+      <div class="svc-intro-badge">
+        <i class="ph ph-users-three"></i>
+        <small>Social<br>Impact</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT THIS SERVICE COVERS ===== -->
+<section class="covers">
+  <div class="container">
+    <div class="covers-hd">
+      <div class="lbl">Program Scope</div>
+      <h2>How We Give Back</h2>
+    </div>
+    <div class="covers-grid">
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-hand-heart"></i></div>
+        <div class="covers-num">01</div>
+        <h4>Community Development</h4>
+        <p>Supporting local initiatives linked to mining and infrastructure, focusing on sustainable contributions that strengthen community relationships.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-student"></i></div>
+        <div class="covers-num">02</div>
+        <h4>Skills & Knowledge Sharing</h4>
+        <p>Exposure to geospatial concepts and surveying practices for local youth, building capacity and supporting future participation in the sector.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-leaf"></i></div>
+        <div class="covers-num">03</div>
+        <h4>Environmental Awareness</h4>
+        <p>Promoting sustainable land use and helping communities understand how spatial data contributes to better environmental decision-making.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-handshake"></i></div>
+        <div class="covers-num">04</div>
+        <h4>Stakeholder Engagement</h4>
+        <p>Encouraging transparency and collaboration with local authorities and project stakeholders to ensure projects are delivered responsibly.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-globe-hemisphere-west"></i></div>
+        <div class="covers-num">05</div>
+        <h4>Socially Grounded Results</h4>
+        <p>Aligning technical expertise with social responsibility to ensure every project is accurate, compliant, and sustainable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE GEOMAPPING ===== -->
+<section class="why">
+  <div class="container">
+    <div class="why-img-w">
+      <img src="images/pexels-davidelocatelli-2383650.jpg" alt="Responsible operations">
+      <div class="why-badge">
+        <strong>Social</strong>
+        Responsibility<br>Guaranteed
+      </div>
+    </div>
+    <div class="why-cont">
+      <div class="lbl">Our Philosophy</div>
+      <h2>Why Social Responsibility<br>Matters to Us</h2>
+      <div class="why-list">
+        <div class="why-item" [class.active]="activeWhyItem() === 0" (click)="activeWhyItem.set(0)">
+          <div class="why-n">01</div>
+          <div class="why-txt">
+            <h4>An Integrated Approach</h4>
+            <p>Community programs are not treated as a separate activity; they are an integral part of how we operate and deliver our technical services.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 1" (click)="activeWhyItem.set(1)">
+          <div class="why-n">02</div>
+          <div class="why-txt">
+            <h4>Building Local Capacity</h4>
+            <p>We believe in sharing our technical knowledge to empower local communities, creating opportunities for future geospatial professionals.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 2" (click)="activeWhyItem.set(2)">
+          <div class="why-n">03</div>
+          <div class="why-txt">
+            <h4>Sustainable Operations</h4>
+            <p>Our focus on environmental and social impact ensures that our mining and infrastructure projects create long-term value for South Africa.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 3" (click)="activeWhyItem.set(3)">
+          <div class="why-n">04</div>
+          <div class="why-txt">
+            <h4>Technical & Social Alignment</h4>
+            <p>We ensure that our technical excellence in survey and LiDAR is always matched with a high standard of respect for the local environment and people.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED SERVICES ===== -->
+<section class="rel-svcs">
+  <div class="container">
+    <div class="rel-svcs-hd">
+      <div class="lbl">Explore More</div>
+      <h2>Related Services</h2>
+    </div>
+    <div class="rel-grid">
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-hard-hat"></i></div>
+        <h4>Mining Surveying &amp; Planning</h4>
+        <p>Professional mining surveying and planning solutions supporting safe, efficient, and compliant operations.</p>
+        <a href="msp.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-drone"></i></div>
+        <h4>Aerial Survey &amp; GIS</h4>
+        <p>High-resolution drone photogrammetry, LiDAR scanning, and GIS spatial analysis delivering precise geospatial intelligence.</p>
+        <a href="aerial-survey-gis.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-ruler"></i></div>
+        <h4>Engineering &amp; Construction Survey</h4>
+        <p>Setting-out, as-built, and deformation surveys supporting accurate project delivery from design to completion.</p>
+        <a href="engineering-construction.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-shield-check"></i></div>
+        <h4>Aerial Security Solutions</h4>
+        <p>Drone-based crime monitoring, traffic management, and critical infrastructure surveillance solutions.</p>
+        <a href="aerial-security.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-ban">
+  <div class="cta-ban-bg">
+    <img src="images/pexels-printexstar-11680715.jpg" alt="GeoMapping community outreach">
+  </div>
+  <div class="cta-ban-ov"></div>
+  <div class="container cta-ban-inner">
+    <div class="lbl">Get Involved</div>
+    <h2>Growing Together through <em>Social Responsibility</em></h2>
+    <a href="contact.html" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+      Enquire Now <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>

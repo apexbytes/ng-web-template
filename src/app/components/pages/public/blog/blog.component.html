@@ -1,0 +1,59 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  @if (post()?.imageUrl) {
+    <img [src]="post()!.imageUrl!" alt="" class="page-banner-bg">
+  } @else {
+    <img src="images/aerial_survey.jpg" alt="" class="page-banner-bg">
+  }
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">News &amp; Blog</div>
+      <h1>{{ post()?.title ?? 'Blog Post' }}</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POST CONTENT ===== -->
+@if (postResource.isLoading()) {
+  <section class="post-detail">
+    <div class="container">
+      <div class="post-loading">
+        <div class="post-loading-bar"></div>
+        <div class="post-loading-bar short"></div>
+        <div class="post-loading-bar"></div>
+        <div class="post-loading-bar medium"></div>
+      </div>
+    </div>
+  </section>
+} @else if (post()) {
+  <section class="post-detail">
+    <div class="container">
+      <div class="post-inner">
+        @if (post()!.imageUrl) {
+          <img [src]="post()!.imageUrl!" [alt]="post()!.title" class="post-hero-img">
+        }
+        <div class="post-meta">
+          <span><i class="ph ph-user"></i> Admin</span>
+          <span><i class="ph ph-calendar"></i> {{ post()!.createdAt | date:'MMMM d, y' }}</span>
+        </div>
+        <div class="post-content" [innerHTML]="post()!.content"></div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="post-detail">
+    <div class="container">
+      <div class="post-not-found">
+        <h2>Post not found</h2>
+        <p>The post you are looking for does not exist or has been removed.</p>
+        <a routerLink="/" class="btn-fill" style="margin-top:24px;display:inline-flex;">Back to Home <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+}

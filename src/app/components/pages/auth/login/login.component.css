@@ -1,0 +1,4 @@
+/* Login-specific: accent line under the card header */
+:host {
+  display: block;
+}

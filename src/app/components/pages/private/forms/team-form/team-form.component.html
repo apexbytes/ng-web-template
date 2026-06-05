@@ -1,0 +1,148 @@
+<div class="dialog-header">
+  <h4>{{ isEdit ? 'Edit Team Member' : 'Add Team Member' }}</h4>
+  <button type="button" class="close_dialog" (click)="close()" aria-label="Close">
+    <i class="ph ph-x" aria-hidden="true"></i>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <form [formGroup]="form" id="team-form" (ngSubmit)="submit()">
+    <div class="form-grid-2">
+
+      <!-- Left column: Basic info + Image -->
+      <div class="form-col">
+
+        <div class="form-group">
+          <label for="member-name">Full Name</label>
+          <input
+            id="member-name"
+            type="text"
+            formControlName="name"
+            class="form-control"
+            [class.is-invalid]="nameCtrl.invalid && nameCtrl.touched"
+            placeholder="e.g. John Doe"
+          />
+          @if (nameCtrl.touched && nameCtrl.hasError('required')) {
+            <span class="field-error">Name is required</span>
+          } @else if (nameCtrl.touched && nameCtrl.hasError('minlength')) {
+            <span class="field-error">Name must be at least 3 characters</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="member-title">Title / Role</label>
+          <input
+            id="member-title"
+            type="text"
+            formControlName="title"
+            class="form-control"
+            [class.is-invalid]="titleCtrl.invalid && titleCtrl.touched"
+            placeholder="e.g. Senior Surveyor"
+          />
+          @if (titleCtrl.touched && titleCtrl.hasError('required')) {
+            <span class="field-error">Title is required</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="member-sort">Sort Order</label>
+          <input
+            id="member-sort"
+            type="number"
+            formControlName="sortOrder"
+            class="form-control"
+            placeholder="0"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Profile Picture <span class="form-optional">(optional)</span></label>
+          @if (previewUrl()) {
+            <div class="img-preview-wrap">
+              <img [src]="previewUrl()!" alt="Profile preview" class="img-preview" />
+              @if (selectedFile()) {
+                <button type="button" class="img-remove-btn" (click)="clearFile()" aria-label="Remove selected image">
+                  <i class="ph ph-x" aria-hidden="true"></i>
+                </button>
+              }
+            </div>
+          }
+          <label class="file-drop-zone" for="member-image">
+            <i class="ph-duotone ph-user-circle" aria-hidden="true"></i>
+            <p>{{ selectedFile() ? selectedFile()!.name : 'Click to upload photo' }}</p>
+            <small>JPEG, PNG, WebP · Max 2 MB</small>
+            <input
+              id="member-image"
+              type="file"
+              accept="image/*"
+              style="display:none"
+              (change)="onFileChange($event)"
+            />
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Right column: Social Links -->
+      <div class="form-col">
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <label style="margin-bottom: 0;">Social Links</label>
+            <button type="button" class="btn-dash btn-dash-secondary btn-sm" (click)="addSocial()">
+              <i class="ph ph-plus" aria-hidden="true"></i> Add Link
+            </button>
+          </div>
+
+          <div formArrayName="socials" class="socials-list">
+            @for (social of socialsArray.controls; track $index) {
+              <div [formGroupName]="$index" class="social-item-row">
+                <div class="form-grid-2" style="gap: 8px; margin-bottom: 8px;">
+                  <select formControlName="platform" class="form-control">
+                    <option value="">Platform</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Twitter">Twitter / X</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Website">Website</option>
+                  </select>
+                  <div style="display: flex; gap: 8px;">
+                    <input type="text" formControlName="link" class="form-control" placeholder="https://..." />
+                    <button type="button" class="btn-icon-danger" (click)="removeSocial($index)" aria-label="Remove link">
+                      <i class="ph ph-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            } @empty {
+              <div class="empty-state-simple">
+                <p>No social links added yet.</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="dialog-actions">
+  <button
+    type="button"
+    class="btn-dash btn-dash-secondary"
+    (click)="close()"
+    [disabled]="loading()"
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+    form="team-form"
+    class="btn-dash btn-dash-primary"
+    [disabled]="loading()"
+  >
+    @if (loading()) {
+      <i class="ph ph-circle-notch spin" aria-hidden="true"></i>
+    }
+    {{ isEdit ? 'Save Changes' : 'Add Member' }}
+  </button>
+</div>

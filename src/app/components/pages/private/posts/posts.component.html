@@ -1,0 +1,114 @@
+<div class="page-hdr">
+  <h1 class="page-hdr-title">Posts</h1>
+  <button type="button" class="btn-dash btn-dash-primary" (click)="openCreate()">
+    <i class="ph ph-plus" aria-hidden="true"></i>
+    Create Post
+  </button>
+</div>
+
+<div class="data-table-wrap">
+  <table class="data-table" aria-label="Posts table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Status</th>
+        <th scope="col">Created</th>
+        <th scope="col">Updated</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (postsResource.isLoading()) {
+        @for (_ of [1, 2, 3, 4, 5, 6, 7, 8]; track $index) {
+          <tr class="tbl-skeleton">
+            <td><div class="skeleton skeleton-title"></div></td>
+            <td><div class="skeleton skeleton-sm"></div></td>
+            <td><div class="skeleton skeleton-sm"></div></td>
+            <td><div class="skeleton skeleton-sm"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+          </tr>
+        }
+      } @else if (posts().length === 0) {
+        <tr>
+          <td colspan="5">
+            <div class="tbl-empty">
+              <i class="ph-duotone ph-article" aria-hidden="true"></i>
+              <p>No posts found</p>
+            </div>
+          </td>
+        </tr>
+      } @else {
+        @for (post of posts(); track post.id) {
+          <tr>
+            <td class="col-title">{{ post.title }}</td>
+            <td>
+              <span [class]="post.status === 'PUBLISHED' ? 'status-badge badge-published' : 'status-badge badge-draft'">
+                {{ post.status === 'PUBLISHED' ? 'Published' : 'Draft' }}
+              </span>
+            </td>
+            <td class="col-muted">{{ post.createdAt | date:'dd MMM yyyy' }}</td>
+            <td class="col-muted">{{ post.updatedAt | date:'dd MMM yyyy' }}</td>
+            <td>
+              <div class="tbl-actions">
+                <button type="button" class="btn-icon" aria-label="Edit post" (click)="openEdit(post)">
+                  <i class="ph ph-pencil-simple" aria-hidden="true"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn-icon btn-icon-danger"
+                  aria-label="Delete post"
+                  (click)="deletePost(post.id)"
+                >
+                  <i class="ph ph-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+
+  @if (!postsResource.isLoading() && (meta()?.total ?? 0) > 0) {
+    <div class="pagination" role="navigation" aria-label="Table pagination">
+      <span class="pg-info">
+        Showing {{ showingFrom() }}–{{ showingTo() }} of {{ meta()!.total }} results
+      </span>
+      <div class="pg-controls">
+        <button
+          type="button"
+          class="pg-btn"
+          [disabled]="pagination.page() === 1"
+          (click)="pagination.prev()"
+          aria-label="Previous page"
+        >
+          <i class="ph ph-caret-left" aria-hidden="true"></i>
+        </button>
+
+        @for (p of pageRange(); track $index) {
+          @if (p === null) {
+            <span class="pg-ellipsis" aria-hidden="true">…</span>
+          } @else {
+            <button
+              type="button"
+              class="pg-btn"
+              [class.active]="p === pagination.page()"
+              [attr.aria-current]="p === pagination.page() ? 'page' : null"
+              (click)="pagination.goTo(p)"
+            >{{ p }}</button>
+          }
+        }
+
+        <button
+          type="button"
+          class="pg-btn"
+          [disabled]="pagination.page() >= totalPages()"
+          (click)="pagination.next()"
+          aria-label="Next page"
+        >
+          <i class="ph ph-caret-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  }
+</div>

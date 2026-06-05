@@ -1,0 +1,205 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/aerial_survey.jpg" alt="Aerial survey and GIS" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Our Services</div>
+      <h1>Aerial Survey<br>&amp; <em>GIS</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <a href="index.html#services">Services</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Aerial Survey &amp; GIS</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE INTRO ===== -->
+<section class="svc-intro">
+  <div class="container">
+    <div>
+      <div class="lbl">Aerial Survey & GIS</div>
+      <h2 class="svc-intro-h2">High-Precision Geospatial<br>Intelligence from Above</h2>
+      <p class="svc-intro-p">GeoMapping Pty Ltd delivers advanced aerial survey and GIS services using state-of-the-art drone technology, LiDAR sensors, and spatial analysis tools. We provide our clients with accurate, actionable geospatial intelligence that traditional ground surveys simply cannot match in speed or scale.</p>
+      <p class="svc-intro-p">Our SACAA-certified team ensures that every flight is executed safely and legally, providing high-resolution data that forms the foundation of smart decision-making across mining, engineering, and environmental sectors.</p>
+      <ul class="about-checks">
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          High-resolution drone photogrammetry and 3D modeling
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Advanced LiDAR scanning for precise terrain and vegetation analysis
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Comprehensive GIS spatial analysis and mapping solutions
+        </li>
+      </ul>
+      <div class="about-foot" style="margin-top: 32px;">
+        <a href="contact.html" class="btn-fill">Enquire Now <i class="ph ph-arrow-right"></i></a>
+        <a href="contact.html" class="btn-line">Contact Us <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="svc-intro-vis">
+      <img src="images/drone_survey.jpg" alt="Aerial survey drone equipment" class="svc-intro-img">
+      <div class="svc-intro-badge">
+        <i class="ph ph-drone"></i>
+        <small>Aerial<br>Experts</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT THIS SERVICE COVERS ===== -->
+<section class="covers">
+  <div class="container">
+    <div class="covers-hd">
+      <div class="lbl">Service Scope</div>
+      <h2>What This Service Covers</h2>
+    </div>
+    <div class="covers-grid">
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-images"></i></div>
+        <div class="covers-num">01</div>
+        <h4>High-Resolution Photogrammetry</h4>
+        <p>Capturing thousands of high-resolution images to create accurate orthomosaics, 3D point clouds, and textured mesh models of any site.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-pulse"></i></div>
+        <div class="covers-num">02</div>
+        <h4>LiDAR Scanning & Terrain Modeling</h4>
+        <p>Using laser-based scanning to penetrate vegetation and capture precise ground elevations, creating highly accurate Digital Terrain Models (DTM).</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-map-trifold"></i></div>
+        <div class="covers-num">03</div>
+        <h4>GIS Spatial Analysis & Mapping</h4>
+        <p>Turning raw data into intelligence through spatial modeling, database management, and customized map production for planning and oversight.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-thermometer"></i></div>
+        <div class="covers-num">04</div>
+        <h4>Thermal & Multi-Spectral Imaging</h4>
+        <p>Specialized sensors for identifying heat signatures, water leaks, or vegetation health — critical for environmental and industrial monitoring.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-intersect"></i></div>
+        <div class="covers-num">05</div>
+        <h4>Orthophotography & Topographic Maps</h4>
+        <p>Producing distortion-free, scale-accurate aerial photographs and detailed contour maps used as base layers for engineering design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CLIENTS CHOOSE GEOMAPPING ===== -->
+<section class="why">
+  <div class="container">
+    <div class="why-img-w">
+      <img src="images/pexels-davidelocatelli-2383650.jpg" alt="Drone operations">
+      <div class="why-badge">
+        <strong>SACAA</strong>
+        Certified<br>Operations
+      </div>
+    </div>
+    <div class="why-cont">
+      <div class="lbl">Why Choose Us</div>
+      <h2>The GeoMapping<br>Aerial Advantage</h2>
+      <div class="why-list">
+        <div class="why-item" [class.active]="activeWhyItem() === 0" (click)="activeWhyItem.set(0)">
+          <div class="why-n">01</div>
+          <div class="why-txt">
+            <h4>Precision at Scale</h4>
+            <p>Our drone solutions can cover hundreds of hectares in a single day, delivering centimetre-accurate data that would take weeks for ground teams to collect.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 1" (click)="activeWhyItem.set(1)">
+          <div class="why-n">02</div>
+          <div class="why-txt">
+            <h4>SACAA-Certified Safety</h4>
+            <p>We are fully compliant with South African Civil Aviation Authority regulations, ensuring every mission is legal, insured, and professionally managed.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 2" (click)="activeWhyItem.set(2)">
+          <div class="why-n">03</div>
+          <div class="why-txt">
+            <h4>Advanced Sensor Technology</h4>
+            <p>We deploy the latest RTK-enabled drones and high-end sensors (LiDAR, Thermal, RGB) to ensure the highest data quality for every specific application.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 3" (click)="activeWhyItem.set(3)">
+          <div class="why-n">04</div>
+          <div class="why-txt">
+            <h4>Actionable Intelligence</h4>
+            <p>We don't just deliver images; we deliver data that is ready for your CAD, GIS, or planning software, complete with professional analysis and reporting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED SERVICES ===== -->
+<section class="rel-svcs">
+  <div class="container">
+    <div class="rel-svcs-hd">
+      <div class="lbl">Explore More</div>
+      <h2>Related Services</h2>
+    </div>
+    <div class="rel-grid">
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-hard-hat"></i></div>
+        <h4>Mining Surveying &amp; Planning</h4>
+        <p>Professional mining surveying and planning solutions supporting safe, efficient, and compliant operations across South Africa.</p>
+        <a href="msp.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-ruler"></i></div>
+        <h4>Engineering &amp; Construction Survey</h4>
+        <p>Setting-out, as-built, and deformation surveys supporting accurate project delivery from initial design through to final completion.</p>
+        <a href="engineering-construction.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-shield-check"></i></div>
+        <h4>Aerial Security Solutions</h4>
+        <p>Drone-based crime monitoring, traffic management, and critical infrastructure surveillance solutions for mines and high-value assets.</p>
+        <a href="aerial-security.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-users-three"></i></div>
+        <h4>Community Programs</h4>
+        <p>Skills development, geospatial training initiatives, and environmental awareness programmes supporting local communities.</p>
+        <a href="community-programs.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-ban">
+  <div class="cta-ban-bg">
+    <img src="images/pexels-kokorevas-20178416.jpg" alt="GeoMapping field operations">
+  </div>
+  <div class="cta-ban-ov"></div>
+  <div class="container cta-ban-inner">
+    <div class="lbl">Get Started</div>
+    <h2>Ready for Precise <em>Aerial Intelligence?</em></h2>
+    <a href="contact.html" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+      Enquire Now <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>

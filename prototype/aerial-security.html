@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aerial Security Solutions — GeoMapping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+  <style>
+    /* ===== PAGE BANNER ===== */
+    .page-banner {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .page-banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      opacity: .35;
+    }
+
+    .page-banner-ov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(26,26,26,.95) 40%, rgba(26,26,26,.55) 100%);
+    }
+
+    .page-banner-body {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-banner-body h1 {
+      font-size: 52px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .page-banner-body h1 em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 10px;
+    }
+
+    .breadcrumb a {
+      color: #aaa;
+      transition: color .2s;
+    }
+
+    .breadcrumb a:hover { color: var(--orange); }
+
+    .breadcrumb i {
+      font-size: 10px;
+      color: var(--orange);
+    }
+
+    .breadcrumb span { color: var(--orange); }
+
+    /* ===== SERVICE INTRO ===== */
+    .svc-intro {
+      padding: 110px 0;
+      overflow: hidden;
+    }
+
+    .svc-intro .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .svc-intro-h2 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 18px;
+    }
+
+    .svc-intro-p {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+
+    .svc-intro-vis {
+      position: relative;
+    }
+
+    .svc-intro-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .svc-intro-badge {
+      position: absolute;
+      top: 40px;
+      right: -24px;
+      background: var(--orange);
+      color: #fff;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .svc-intro-badge i {
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+
+    .svc-intro-badge small {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    /* ===== WHAT THIS SERVICE COVERS ===== */
+    .covers {
+      background: var(--dark);
+      padding: 100px 0;
+    }
+
+    .covers-hd {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .covers-hd .lbl {
+      justify-content: center;
+    }
+
+    .covers-hd h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .covers-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+
+    .covers-item {
+      grid-column: span 2;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-top: 3px solid var(--orange);
+      padding: 36px 28px;
+      transition: background .25s;
+    }
+
+    .covers-item:nth-child(4) { grid-column: 2 / span 2; }
+    .covers-item:nth-child(5) { grid-column: 4 / span 2; }
+
+    .covers-item:hover {
+      background: rgba(255,255,255,.08);
+    }
+
+    .covers-num {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: .5;
+    }
+
+    .covers-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(232,119,34,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .covers-item h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    .covers-item p {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.8;
+    }
+
+    /* ===== RELATED SERVICES ===== */
+    .rel-svcs {
+      padding: 110px 0;
+      background: var(--light);
+    }
+
+    .rel-svcs-hd {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .rel-svcs-hd .lbl {
+      justify-content: center;
+    }
+
+    .rel-svcs-hd h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .rel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .rel-card {
+      background: #fff;
+      padding: 36px 28px;
+      border-bottom: 4px solid transparent;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .rel-card:hover {
+      border-bottom-color: var(--orange);
+      box-shadow: 0 16px 40px rgba(0,0,0,.09);
+      transform: translateY(-4px);
+    }
+
+    .rel-icon {
+      width: 54px;
+      height: 54px;
+      background: #FFF3E9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 22px;
+      transition: background .25s, color .25s;
+    }
+
+    .rel-card:hover .rel-icon {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .rel-card h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.35;
+    }
+
+    .rel-card p {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .rel-lnk {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: gap .2s;
+    }
+
+    .rel-card:hover .rel-lnk {
+      gap: 10px;
+    }
+
+    /* ===== PAGE-SPECIFIC RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .svc-intro-badge { right: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .page-banner { height: 300px; }
+      .page-banner-body h1 { font-size: 36px; }
+
+      .svc-intro { padding: 72px 0 100px; }
+      .svc-intro .container { grid-template-columns: 1fr; gap: 40px; }
+      .svc-intro-vis { order: -1; }
+      .svc-intro-img { height: 360px; }
+      .svc-intro-badge { right: 12px; top: 12px; }
+      .svc-intro-h2 { font-size: 30px; }
+
+      .covers { padding: 72px 0; }
+      .covers-hd h2 { font-size: 30px; }
+      .covers-grid { grid-template-columns: repeat(2, 1fr); }
+      .covers-item { grid-column: span 1 !important; }
+
+      .rel-svcs { padding: 72px 0; }
+      .rel-svcs-hd h2 { font-size: 30px; }
+      .rel-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .page-banner { height: 240px; }
+      .page-banner-body h1 { font-size: 26px; }
+
+      .svc-intro { padding: 56px 0 80px; }
+      .svc-intro-h2 { font-size: 24px; }
+      .svc-intro-img { height: 240px; }
+      .svc-intro-badge { width: 88px; height: 88px; }
+      .svc-intro-badge i { font-size: 22px; }
+
+      .covers-hd h2 { font-size: 24px; }
+      .covers-grid { grid-template-columns: 1fr; }
+
+      .rel-svcs-hd h2 { font-size: 24px; }
+      .rel-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-l">
+      <span class="tb-item"><i class="ph ph-map-pin"></i> Nita Avenue, Del Judor, eMalahleni, Witbank, 1045</span>
+      <span class="tb-item"><i class="ph ph-clock"></i> Mon – Fri: 8:00am – 5:00pm</span>
+    </div>
+    <div class="topbar-r">
+      <span class="tb-item"><i class="ph ph-envelope"></i> info@geomapping.co.za</span>
+      <div class="tb-soc">
+        <a href="#"><i class="ph ph-facebook-logo"></i></a>
+        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+        <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-box"><i class="ph ph-map-trifold"></i></div>
+      GEOMAPPING
+    </a>
+    <nav>
+      <a class="nav-a" href="index.html">Home</a>
+      <div class="nav-drop-wrap">
+        <a class="nav-a active" href="index.html#services">Services <i class="ph ph-caret-down"></i></a>
+        <div class="nav-dropdown">
+          <a href="msp.html">Mining Surveying &amp; Planning</a>
+          <a href="aerial-survey-gis.html">Aerial Survey &amp; GIS</a>
+          <a href="engineering-construction.html">Engineering &amp; Construction Survey</a>
+          <a href="aerial-security.html">Aerial Security Solutions</a>
+          <a href="community-programs.html">Community Programs</a>
+        </div>
+      </div>
+      <a class="nav-a" href="about.html">About</a>
+      <a class="nav-a" href="index.html#projects">Projects</a>
+      <a class="nav-a" href="index.html#blog">News <i class="ph ph-caret-down"></i></a>
+      <a class="nav-a" href="contact.html">Contact</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="hdr-phone">
+        <div class="hdr-ph-icon"><i class="ph ph-phone"></i></div>
+        <div class="hdr-ph-text">
+          <small>Call Anytime</small>
+          <strong>+27 (0)72 944 5830</strong>
+        </div>
+      </div>
+      <a href="contact.html" class="btn-fill">Get In Touch</a>
+      <button class="hdr-search"><i class="ph ph-magnifying-glass"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MOBILE NAV ===== -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <a href="index.html"><i class="ph ph-house"></i> Home</a>
+  <div class="mob-drop-wrap open">
+    <a href="index.html#services" class="mob-drop-toggle"><span><i class="ph ph-hard-hat"></i> Services</span><i class="ph ph-caret-down mob-drop-caret"></i></a>
+    <div class="mob-dropdown">
+      <a href="msp.html">Mining Surveying &amp; Planning</a>
+      <a href="aerial-survey-gis.html">Aerial Survey &amp; GIS</a>
+      <a href="engineering-construction.html">Engineering &amp; Construction Survey</a>
+      <a href="aerial-security.html" class="active">Aerial Security Solutions</a>
+      <a href="community-programs.html">Community Programs</a>
+    </div>
+  </div>
+  <a href="about.html"><i class="ph ph-info"></i> About</a>
+  <a href="index.html#projects"><i class="ph ph-map-trifold"></i> Projects</a>
+  <a href="index.html#blog"><i class="ph ph-newspaper"></i> News</a>
+  <a href="contact.html"><i class="ph ph-envelope"></i> Contact</a>
+</nav>
+
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/pexels-kokorevas-20178416.jpg" alt="Aerial security operations" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Our Services</div>
+      <h1>Aerial Security<br><em>Solutions</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <a href="index.html#services">Services</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Aerial Security Solutions</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE INTRO ===== -->
+<section class="svc-intro">
+  <div class="container">
+    <div>
+      <div class="lbl">Security Solutions</div>
+      <h2 class="svc-intro-h2">Elevated Intelligence for<br>Proactive Asset Protection</h2>
+      <p class="svc-intro-p">GeoMapping Pty Ltd delivers advanced aerial security solutions designed for large industrial sites, remote assets, and critical infrastructure. Our service leverages drone-based aerial intelligence integrated with ground-based personnel to provide real-time insight and early threat identification.</p>
+      <p class="svc-intro-p">By adding an elevated layer of oversight, we help security teams reduce blind spots, improve response times, and maintain operational confidence in high-risk environments across South Africa.</p>
+      <ul class="about-checks">
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Real-time aerial monitoring and early threat detection
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Seamless integration with existing ground-based security teams
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Intelligent protection for mining, industrial, and public assets
+        </li>
+      </ul>
+      <div class="about-foot" style="margin-top: 32px;">
+        <a href="contact.html" class="btn-fill">Enquire Now <i class="ph ph-arrow-right"></i></a>
+        <a href="contact.html" class="btn-line">Contact Us <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="svc-intro-vis">
+      <img src="images/pexels-printexstar-11680715.jpg" alt="Drone security monitoring" class="svc-intro-img">
+      <div class="svc-intro-badge">
+        <i class="ph ph-shield-check"></i>
+        <small>Security<br>Experts</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT THIS SERVICE COVERS ===== -->
+<section class="covers">
+  <div class="container">
+    <div class="covers-hd">
+      <div class="lbl">Service Scope</div>
+      <h2>What This Service Covers</h2>
+    </div>
+    <div class="covers-grid">
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-eye"></i></div>
+        <div class="covers-num">01</div>
+        <h4>Crime Element Detection</h4>
+        <p>Monitoring and deterrence of criminal activity across large or hard-to-access areas, providing security teams with an early warning system.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-users-three"></i></div>
+        <div class="covers-num">02</div>
+        <h4>Integration of Personnel</h4>
+        <p>Enhancing situational awareness for on-site security teams, allowing for better coordination during routine patrols or live incidents.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-cpu"></i></div>
+        <div class="covers-num">03</div>
+        <h4>Systems & Device Deployment</h4>
+        <p>Expert deployment of specialized drone platforms and sensors that integrate directly into your existing security monitoring frameworks.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-car"></i></div>
+        <div class="covers-num">04</div>
+        <h4>Traffic & Route Management</h4>
+        <p>Analysis of traffic flow and incident detection for operational sites, ensuring safety and efficiency along transport and logistics routes.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-factory"></i></div>
+        <div class="covers-num">05</div>
+        <h4>Infrastructure Oversight</h4>
+        <p>Regular aerial inspections of critical infrastructure to identify risks, damage, or unauthorized access before situations escalate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CLIENTS CHOOSE GEOMAPPING ===== -->
+<section class="why">
+  <div class="container">
+    <div class="why-img-w">
+      <img src="images/pexels-iwashere-15109992.jpg" alt="Security surveillance">
+      <div class="why-badge">
+        <strong>100%</strong>
+        Situational<br>Awareness
+      </div>
+    </div>
+    <div class="why-cont">
+      <div class="lbl">Why Choose Us</div>
+      <h2>Why Choose Our<br>Security Solutions</h2>
+      <div class="why-list">
+        <div class="why-item active">
+          <div class="why-n">01</div>
+          <div class="why-txt">
+            <h4>Elevated Perspective</h4>
+            <p>Drones provide a view that fixed ground-based cameras and patrols cannot achieve, covering vast areas in minutes and eliminating traditional blind spots.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-n">02</div>
+          <div class="why-txt">
+            <h4>Improved Response Times</h4>
+            <p>Aerial intelligence allows for faster identification of threats, enabling security teams to respond more effectively and with better situational data.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-n">03</div>
+          <div class="why-txt">
+            <h4>Intelligent Layered Protection</h4>
+            <p>We provide a smart layer of oversight that enhances existing security protocols, improving overall safety and operational confidence for site owners.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-n">04</div>
+          <div class="why-txt">
+            <h4>Seamless System Integration</h4>
+            <p>Our solutions are designed to work alongside your current security infrastructure, augmenting your team's capabilities without disrupting established workflows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED SERVICES ===== -->
+<section class="rel-svcs">
+  <div class="container">
+    <div class="rel-svcs-hd">
+      <div class="lbl">Explore More</div>
+      <h2>Related Services</h2>
+    </div>
+    <div class="rel-grid">
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-drone"></i></div>
+        <h4>Aerial Survey &amp; GIS</h4>
+        <p>High-resolution drone photogrammetry, LiDAR scanning, and GIS spatial analysis delivering precise geospatial intelligence.</p>
+        <a href="aerial-survey-gis.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-hard-hat"></i></div>
+        <h4>Mining Surveying &amp; Planning</h4>
+        <p>Professional mining surveying and planning solutions supporting safe, efficient, and compliant operations across South Africa.</p>
+        <a href="msp.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-ruler"></i></div>
+        <h4>Engineering &amp; Construction Survey</h4>
+        <p>Setting-out, as-built, and deformation surveys supporting accurate project delivery from initial design to final completion.</p>
+        <a href="engineering-construction.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-users-three"></i></div>
+        <h4>Community Programs</h4>
+        <p>Skills development, geospatial training initiatives, and environmental awareness programmes supporting local communities.</p>
+        <a href="community-programs.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-ban">
+  <div class="cta-ban-bg">
+    <img src="images/pexels-davidelocatelli-2383650.jpg" alt="GeoMapping security operations">
+  </div>
+  <div class="cta-ban-ov"></div>
+  <div class="container cta-ban-inner">
+    <div class="lbl">Get Started</div>
+    <h2>Protect Your Assets with <em>Aerial Intelligence</em></h2>
+    <a href="contact.html" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+      Enquire Now <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="ftr-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-box"><i class="ph ph-map-trifold"></i></div>
+            GEOMAPPING
+          </a>
+          <p>GeoMapping Pty Ltd is the top provider of advanced Mining Surveying, Planning, and Geospatial solutions in South Africa. SACAA-certified and backed by over five years of industry experience.</p>
+          <div class="ftr-soc">
+            <a href="#"><i class="ph ph-facebook-logo"></i></a>
+            <a href="#"><i class="ph ph-twitter-logo"></i></a>
+            <a href="#"><i class="ph ph-instagram-logo"></i></a>
+            <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            <a href="#"><i class="ph ph-youtube-logo"></i></a>
+          </div>
+        </div>
+        <div class="ftr-col">
+          <h4>Quick Links</h4>
+          <ul class="ftr-links">
+            <li><a href="index.html"><i class="ph ph-caret-right"></i> Home</a></li>
+            <li><a href="index.html#services"><i class="ph ph-caret-right"></i> Our Services</a></li>
+            <li><a href="about.html"><i class="ph ph-caret-right"></i> About Us</a></li>
+            <li><a href="index.html#projects"><i class="ph ph-caret-right"></i> Recent Projects</a></li>
+            <li><a href="index.html#blog"><i class="ph ph-caret-right"></i> News &amp; Blog</a></li>
+            <li><a href="contact.html"><i class="ph ph-caret-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Services</h4>
+          <ul class="ftr-links">
+            <li><a href="msp.html"><i class="ph ph-caret-right"></i> Mining Surveying &amp; Planning</a></li>
+            <li><a href="aerial-survey-gis.html"><i class="ph ph-caret-right"></i> Aerial Survey &amp; GIS</a></li>
+            <li><a href="engineering-construction.html"><i class="ph ph-caret-right"></i> Engineering Survey</a></li>
+            <li><a href="aerial-security.html"><i class="ph ph-caret-right"></i> Aerial Security Solutions</a></li>
+            <li><a href="community-programs.html"><i class="ph ph-caret-right"></i> Community Programs</a></li>
+            <li><a href="aerial-survey-gis.html"><i class="ph ph-caret-right"></i> UAV / Drone Services</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Contact Info</h4>
+          <ul class="ftr-contact">
+            <li>
+              <i class="ph ph-map-pin"></i>
+              <span><strong style="color:#bbb;">Mpumalanga:</strong><br>Nita Ave, Del Judor, eMalahleni, 1045<br><strong style="color:#bbb;">KwaZulu-Natal:</strong><br>1 Village Way, Sunningdale, Durban 4000</span>
+            </li>
+            <li>
+              <i class="ph ph-phone"></i>
+              <span>Office: +27 (0)13 880 2324<br>Calls &amp; WhatsApp: +27 (0)72 944 5830</span>
+            </li>
+            <li>
+              <i class="ph ph-envelope"></i>
+              <span>info@geomapping.co.za</span>
+            </li>
+            <li>
+              <i class="ph ph-globe"></i>
+              <span>www.geomapping.co.za</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bot">
+      <span>&copy; 2024 <a href="index.html">GeoMapping Pty Ltd</a>. All rights reserved. Website powered by APPLISUM.</span>
+      <div class="ftr-bot-lnks">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Hamburger menu */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  /* Close drawer when a link is tapped (skip the sub-menu toggle itself) */
+  mobileNav.querySelectorAll('a:not(.mob-drop-toggle)').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* Mobile services sub-menu toggle */
+  mobileNav.querySelectorAll('.mob-drop-toggle').forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      toggle.closest('.mob-drop-wrap').classList.toggle('open');
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (mobileNav.classList.contains('open') &&
+        !hamburger.contains(e.target) &&
+        !mobileNav.contains(e.target)) {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+
+  /* Why items click activation */
+  document.querySelectorAll('.why-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.why-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

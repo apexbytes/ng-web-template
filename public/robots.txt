@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard
+Disallow: /auth/
+
+Sitemap: https://geomapping.co.za/sitemap.xml

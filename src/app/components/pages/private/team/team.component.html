@@ -1,0 +1,81 @@
+<div class="page-hdr">
+  <h1 class="page-hdr-title">Team</h1>
+  <button type="button" class="btn-dash btn-dash-primary" (click)="openCreate()">
+    <i class="ph ph-plus" aria-hidden="true"></i>
+    Add Member
+  </button>
+</div>
+
+<div class="data-table-wrap">
+  <table class="data-table" aria-label="Team members table">
+    <thead>
+      <tr>
+        <th scope="col">Member</th>
+        <th scope="col">Title</th>
+        <th scope="col">Socials</th>
+        <th scope="col">Sort Order</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (teamResource.isLoading()) {
+        @for (_ of [1, 2, 3, 4, 5]; track $index) {
+          <tr class="tbl-skeleton">
+            <td><div class="skeleton skeleton-title"></div></td>
+            <td><div class="skeleton skeleton-sm"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+          </tr>
+        }
+      } @else if (members().length === 0) {
+        <tr>
+          <td colspan="5">
+            <div class="tbl-empty">
+              <i class="ph-duotone ph-users-three" aria-hidden="true"></i>
+              <p>No team members found</p>
+            </div>
+          </td>
+        </tr>
+      } @else {
+        @for (member of members(); track member.id) {
+          <tr>
+            <td>
+              <div class="tbl-avatar-cell">
+                <div class="tbl-avatar tbl-avatar--team" aria-hidden="true">{{ initials(member.name) }}</div>
+                <div class="col-name">{{ member.name }}</div>
+              </div>
+            </td>
+            <td class="col-muted">{{ member.title }}</td>
+            <td>
+              @if (socialsCount(member.socials) > 0) {
+                <span class="socials-count">
+                  <i class="ph ph-link" aria-hidden="true"></i>
+                  {{ socialsCount(member.socials) }}
+                </span>
+              } @else {
+                <span class="col-muted">—</span>
+              }
+            </td>
+            <td class="col-sort">{{ member.sortOrder }}</td>
+            <td>
+              <div class="tbl-actions">
+                <button type="button" class="btn-icon" aria-label="Edit team member" (click)="openEdit(member)">
+                  <i class="ph ph-pencil-simple" aria-hidden="true"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn-icon btn-icon-danger"
+                  aria-label="Delete team member"
+                  (click)="deleteTeamMember(member.id)"
+                >
+                  <i class="ph ph-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

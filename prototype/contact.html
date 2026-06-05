@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — GeoMapping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+  <style>
+    /* ===== PAGE BANNER ===== */
+    .page-banner {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .page-banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      opacity: .35;
+    }
+
+    .page-banner-ov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(26,26,26,.95) 40%, rgba(26,26,26,.55) 100%);
+    }
+
+    .page-banner-body {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-banner-body h1 {
+      font-size: 52px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .page-banner-body h1 em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 10px;
+    }
+
+    .breadcrumb a {
+      color: #aaa;
+      transition: color .2s;
+    }
+
+    .breadcrumb a:hover { color: var(--orange); }
+
+    .breadcrumb i {
+      font-size: 10px;
+      color: var(--orange);
+    }
+
+    .breadcrumb span { color: var(--orange); }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-sec {
+      padding: 110px 0;
+    }
+
+    .contact-sec .container {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info-h2 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 22px;
+    }
+
+    .contact-info-p {
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.9;
+      margin-bottom: 40px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      gap: 20px;
+    }
+
+    .cd-icon {
+      width: 54px;
+      height: 54px;
+      background: #FFF3E9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .cd-text h4 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .cd-text p {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form-card {
+      background: #fff;
+      padding: 50px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.08);
+      border-top: 5px solid var(--orange);
+    }
+
+    .contact-form-card h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 30px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: span 2;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dark);
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--dark);
+      transition: border-color .2s;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+
+    .services-checkboxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .checkbox-item input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--orange);
+    }
+
+    .form-submit-btn {
+      margin-top: 16px;
+      width: 100%;
+      justify-content: center;
+      border: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .contact-sec .container { gap: 40px; }
+      .contact-form-card { padding: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .contact-sec { padding: 72px 0; }
+      .contact-sec .container { grid-template-columns: 1fr; }
+      .contact-info-h2 { font-size: 30px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .services-checkboxes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-l">
+      <span class="tb-item"><i class="ph ph-map-pin"></i> Nita Avenue, Del Judor, eMalahleni, Witbank, 1045</span>
+      <span class="tb-item"><i class="ph ph-clock"></i> Mon – Fri: 8:00am – 5:00pm</span>
+    </div>
+    <div class="topbar-r">
+      <span class="tb-item"><i class="ph ph-envelope"></i> info@geomapping.co.za</span>
+      <div class="tb-soc">
+        <a href="#"><i class="ph ph-facebook-logo"></i></a>
+        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+        <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-box"><i class="ph ph-map-trifold"></i></div>
+      GEOMAPPING
+    </a>
+    <nav>
+      <a class="nav-a" href="index.html">Home</a>
+      <div class="nav-drop-wrap">
+        <a class="nav-a" href="index.html#services">Services <i class="ph ph-caret-down"></i></a>
+        <div class="nav-dropdown">
+          <a href="msp.html">Mining Surveying &amp; Planning</a>
+          <a href="aerial-survey-gis.html">Aerial Survey &amp; GIS</a>
+          <a href="engineering-construction.html">Engineering &amp; Construction Survey</a>
+          <a href="aerial-security.html">Aerial Security Solutions</a>
+          <a href="community-programs.html">Community Programs</a>
+        </div>
+      </div>
+      <a class="nav-a" href="about.html">About</a>
+      <a class="nav-a" href="index.html#projects">Projects</a>
+      <a class="nav-a" href="index.html#blog">News <i class="ph ph-caret-down"></i></a>
+      <a class="nav-a active" href="contact.html">Contact</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="hdr-phone">
+        <div class="hdr-ph-icon"><i class="ph ph-phone"></i></div>
+        <div class="hdr-ph-text">
+          <small>Call Anytime</small>
+          <strong>+27 (0)72 944 5830</strong>
+        </div>
+      </div>
+      <a href="contact.html" class="btn-fill">Get In Touch</a>
+      <button class="hdr-search"><i class="ph ph-magnifying-glass"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MOBILE NAV ===== -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <a href="index.html"><i class="ph ph-house"></i> Home</a>
+  <div class="mob-drop-wrap">
+    <a href="index.html#services" class="mob-drop-toggle"><span><i class="ph ph-hard-hat"></i> Services</span><i class="ph ph-caret-down mob-drop-caret"></i></a>
+    <div class="mob-dropdown">
+      <a href="msp.html">Mining Surveying &amp; Planning</a>
+      <a href="aerial-survey-gis.html">Aerial Survey &amp; GIS</a>
+      <a href="engineering-construction.html">Engineering &amp; Construction Survey</a>
+      <a href="aerial-security.html">Aerial Security Solutions</a>
+      <a href="community-programs.html">Community Programs</a>
+    </div>
+  </div>
+  <a href="about.html"><i class="ph ph-info"></i> About</a>
+  <a href="index.html#projects"><i class="ph ph-map-trifold"></i> Projects</a>
+  <a href="index.html#blog"><i class="ph ph-newspaper"></i> News</a>
+  <a href="contact.html" class="active"><i class="ph ph-envelope"></i> Contact</a>
+</nav>
+
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/pexels-iwashere-15109992.jpg" alt="Contact GeoMapping" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Connect with Us</div>
+      <h1>Contact <em>GeoMapping</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Contact Us</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-sec">
+  <div class="container">
+    <!-- Contact Info -->
+    <div>
+      <div class="lbl">Get In Touch</div>
+      <h2 class="contact-info-h2">Have a Project?<br>Let's Discuss It.</h2>
+      <p class="contact-info-p">GeoMapping Pty Ltd is ready to support your mining, engineering, or geospatial needs across South Africa. Fill out the form or reach out via our branch offices below.</p>
+      
+      <div class="contact-details">
+        <div class="contact-detail-item">
+          <div class="cd-icon"><i class="ph ph-map-pin"></i></div>
+          <div class="cd-text">
+            <h4>Our Offices</h4>
+            <p><strong>Mpumalanga:</strong> Nita Ave, Del Judor, eMalahleni, 1045</p>
+            <p><strong>KwaZulu-Natal:</strong> 1 Village Way, Sunningdale, Durban 4000</p>
+          </div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="cd-icon"><i class="ph ph-phone"></i></div>
+          <div class="cd-text">
+            <h4>Call Us</h4>
+            <p>Office: +27 (0)13 880 2324</p>
+            <p>WhatsApp: +27 (0)72 944 5830</p>
+          </div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="cd-icon"><i class="ph ph-envelope"></i></div>
+          <div class="cd-text">
+            <h4>Email Us</h4>
+            <p>info@geomapping.co.za</p>
+            <p>support@geomapping.co.za</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-card">
+      <h3>Send a Message</h3>
+      <form id="contact-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="fullname">Fullname</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. +27 72 000 0000" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="city">City/Town</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+          </div>
+          <div class="form-group full">
+            <label>Select one or more services</label>
+            <div class="services-checkboxes">
+              <label class="checkbox-item">
+                <input type="checkbox" name="services" value="mining"> Mining Surveying & Planning
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="services" value="aerial"> Aerial Survey & GIS
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="services" value="engineering"> Engineering Survey
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="services" value="security"> Aerial Security Solutions
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="services" value="community"> Community Programs
+              </label>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="message">Message (Optional)</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your project..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-fill form-submit-btn">Send Message <i class="ph ph-paper-plane-tilt"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="ftr-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-box"><i class="ph ph-map-trifold"></i></div>
+            GEOMAPPING
+          </a>
+          <p>GeoMapping Pty Ltd is the top provider of advanced Mining Surveying, Planning, and Geospatial solutions in South Africa. SACAA-certified and backed by over five years of industry experience.</p>
+          <div class="ftr-soc">
+            <a href="#"><i class="ph ph-facebook-logo"></i></a>
+            <a href="#"><i class="ph ph-twitter-logo"></i></a>
+            <a href="#"><i class="ph ph-instagram-logo"></i></a>
+            <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            <a href="#"><i class="ph ph-youtube-logo"></i></a>
+          </div>
+        </div>
+        <div class="ftr-col">
+          <h4>Quick Links</h4>
+          <ul class="ftr-links">
+            <li><a href="index.html"><i class="ph ph-caret-right"></i> Home</a></li>
+            <li><a href="index.html#services"><i class="ph ph-caret-right"></i> Our Services</a></li>
+            <li><a href="about.html"><i class="ph ph-caret-right"></i> About Us</a></li>
+            <li><a href="index.html#projects"><i class="ph ph-caret-right"></i> Recent Projects</a></li>
+            <li><a href="index.html#blog"><i class="ph ph-caret-right"></i> News &amp; Blog</a></li>
+            <li><a href="contact.html"><i class="ph ph-caret-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Services</h4>
+          <ul class="ftr-links">
+            <li><a href="msp.html"><i class="ph ph-caret-right"></i> Mining Surveying &amp; Planning</a></li>
+            <li><a href="aerial-survey-gis.html"><i class="ph ph-caret-right"></i> Aerial Survey &amp; GIS</a></li>
+            <li><a href="engineering-construction.html"><i class="ph ph-caret-right"></i> Engineering Survey</a></li>
+            <li><a href="aerial-security.html"><i class="ph ph-caret-right"></i> Aerial Security Solutions</a></li>
+            <li><a href="community-programs.html"><i class="ph ph-caret-right"></i> Community Programs</a></li>
+            <li><a href="aerial-survey-gis.html"><i class="ph ph-caret-right"></i> UAV / Drone Services</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Contact Info</h4>
+          <ul class="ftr-contact">
+            <li>
+              <i class="ph ph-map-pin"></i>
+              <span><strong style="color:#bbb;">Mpumalanga:</strong><br>Nita Ave, Del Judor, eMalahleni, 1045<br><strong style="color:#bbb;">KwaZulu-Natal:</strong><br>1 Village Way, Sunningdale, Durban 4000</span>
+            </li>
+            <li>
+              <i class="ph ph-phone"></i>
+              <span>Office: +27 (0)13 880 2324<br>Calls &amp; WhatsApp: +27 (0)72 944 5830</span>
+            </li>
+            <li>
+              <i class="ph ph-envelope"></i>
+              <span>info@geomapping.co.za</span>
+            </li>
+            <li>
+              <i class="ph ph-globe"></i>
+              <span>www.geomapping.co.za</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bot">
+      <span>&copy; 2024 <a href="index.html">GeoMapping Pty Ltd</a>. All rights reserved. Website powered by APPLISUM.</span>
+      <div class="ftr-bot-lnks">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Hamburger menu */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  /* Close drawer when a link is tapped (skip the sub-menu toggle itself) */
+  mobileNav.querySelectorAll('a:not(.mob-drop-toggle)').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* Mobile services sub-menu toggle */
+  mobileNav.querySelectorAll('.mob-drop-toggle').forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      toggle.closest('.mob-drop-wrap').classList.toggle('open');
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (mobileNav.classList.contains('open') &&
+        !hamburger.contains(e.target) &&
+        !mobileNav.contains(e.target)) {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
+
+  /* Form Submission handling */
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    data.services = formData.getAll('services');
+    
+    console.log('Form Data:', data);
+    alert('Thank you for your message! Our team will get back to you soon.');
+    e.target.reset();
+  });
+</script>
+
+</body>
+</html>

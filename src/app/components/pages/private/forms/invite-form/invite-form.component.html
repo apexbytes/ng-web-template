@@ -1,0 +1,60 @@
+<div class="dialog-header">
+  <h4>Invite User</h4>
+  <button type="button" class="close_dialog" (click)="close()" aria-label="Close">
+    <i class="ph ph-x" aria-hidden="true"></i>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <form [formGroup]="form" id="invite-form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="invite-email">Email Address</label>
+      <input
+        id="invite-email"
+        type="email"
+        formControlName="email"
+        class="form-control"
+        [class.is-invalid]="emailCtrl.invalid && emailCtrl.touched"
+        placeholder="e.g. user@example.com"
+      />
+      @if (emailCtrl.touched && emailCtrl.hasError('required')) {
+        <span class="field-error">Email is required</span>
+      } @else if (emailCtrl.touched && emailCtrl.hasError('email')) {
+        <span class="field-error">Please enter a valid email address</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="invite-role">Role</label>
+      <select id="invite-role" formControlName="role" class="form-control">
+        <option value="EDITOR">Editor (Can manage content)</option>
+        <option value="ADMIN">Admin (Full access)</option>
+      </select>
+      <p class="form-help-text" style="margin-top: 8px; font-size: 0.85rem; color: var(--text-color-muted);">
+        The user will receive an invitation email with a link to complete their registration.
+      </p>
+    </div>
+  </form>
+</div>
+
+<div class="dialog-actions">
+  <button
+    type="button"
+    class="btn-dash btn-dash-secondary"
+    (click)="close()"
+    [disabled]="loading()"
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+    form="invite-form"
+    class="btn-dash btn-dash-primary"
+    [disabled]="loading()"
+  >
+    @if (loading()) {
+      <i class="ph ph-circle-notch spin" aria-hidden="true"></i>
+    }
+    Send Invitation
+  </button>
+</div>

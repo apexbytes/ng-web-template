@@ -1,0 +1,19 @@
+<div class="dialog-header">
+  <h4>{{ title }}</h4>
+  <button type="button" class="close_dialog" (click)="cancel()" aria-label="Close">
+    <i class="ph ph-x" aria-hidden="true"></i>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <p class="confirm-message">{{ message }}</p>
+</div>
+
+<div class="dialog-actions">
+  <button type="button" class="btn-dash btn-dash-secondary" (click)="cancel()">
+    Cancel
+  </button>
+  <button type="button" class="btn-dash btn-dash-danger" (click)="confirm()">
+    {{ confirmLabel }}
+  </button>
+</div>

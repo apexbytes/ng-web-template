@@ -1,0 +1,107 @@
+<div class="dialog-header">
+  <h4>{{ isEdit ? 'Edit Testimonial' : 'Add Testimonial' }}</h4>
+  <button type="button" class="close_dialog" (click)="close()" aria-label="Close">
+    <i class="ph ph-x" aria-hidden="true"></i>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <form [formGroup]="form" id="testimonial-form" (ngSubmit)="submit()">
+
+    <div class="form-group">
+      <label for="testi-name">Author Name</label>
+      <input
+        id="testi-name"
+        type="text"
+        formControlName="name"
+        class="form-control"
+        [class.is-invalid]="nameCtrl.invalid && nameCtrl.touched"
+        placeholder="e.g. Jane Smith"
+      />
+      @if (nameCtrl.touched && nameCtrl.hasError('required')) {
+        <span class="field-error">Name is required</span>
+      } @else if (nameCtrl.touched && nameCtrl.hasError('minlength')) {
+        <span class="field-error">Name must be at least 2 characters</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="testi-testimony">Testimony</label>
+      <textarea
+        id="testi-testimony"
+        formControlName="testimony"
+        class="form-control"
+        [class.is-invalid]="testimonyCtrl.invalid && testimonyCtrl.touched"
+        placeholder="What did the client say?"
+        rows="5"
+      ></textarea>
+      @if (testimonyCtrl.touched && testimonyCtrl.hasError('required')) {
+        <span class="field-error">Testimony is required</span>
+      } @else if (testimonyCtrl.touched && testimonyCtrl.hasError('minlength')) {
+        <span class="field-error">Testimony must be at least 10 characters</span>
+      }
+    </div>
+
+    <div class="form-grid-2">
+
+      <div class="form-group">
+        <label for="testi-sort">Sort Order</label>
+        <input
+          id="testi-sort"
+          type="number"
+          formControlName="sortOrder"
+          class="form-control"
+          placeholder="0"
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="toggle-label" for="testi-active">
+          Show on website
+          <span class="toggle-wrap">
+            <input id="testi-active" type="checkbox" formControlName="isActive" class="toggle-input" />
+            <span class="toggle-track" aria-hidden="true"></span>
+          </span>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>Photo <span class="form-optional">(optional)</span></label>
+      @if (previewUrl()) {
+        <div class="img-preview-wrap">
+          <img [src]="previewUrl()!" alt="Preview" class="img-preview" />
+          <button type="button" class="img-remove-btn" (click)="clearFile()" aria-label="Remove image">
+            <i class="ph ph-x" aria-hidden="true"></i>
+          </button>
+        </div>
+      }
+      <label class="file-drop-zone" for="testi-image">
+        <i class="ph-duotone ph-user-circle" aria-hidden="true"></i>
+        <p>{{ selectedFile() ? selectedFile()!.name : 'Click to upload photo' }}</p>
+        <small>JPEG, PNG, WebP · Max 5 MB</small>
+        <input
+          id="testi-image"
+          type="file"
+          accept="image/*"
+          style="display:none"
+          (change)="onFileChange($event)"
+        />
+      </label>
+    </div>
+
+  </form>
+</div>
+
+<div class="dialog-actions">
+  <button type="button" class="btn-dash btn-dash-secondary" (click)="close()" [disabled]="loading()">
+    Cancel
+  </button>
+  <button type="submit" form="testimonial-form" class="btn-dash btn-dash-primary" [disabled]="loading()">
+    @if (loading()) {
+      <i class="ph ph-circle-notch spin" aria-hidden="true"></i>
+    }
+    {{ isEdit ? 'Save Changes' : 'Add Testimonial' }}
+  </button>
+</div>

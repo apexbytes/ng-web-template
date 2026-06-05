@@ -1,0 +1,78 @@
+<div class="page-hdr">
+  <h1 class="page-hdr-title">Testimonials</h1>
+  <button type="button" class="btn-dash btn-dash-primary" (click)="openCreate()">
+    <i class="ph ph-plus" aria-hidden="true"></i>
+    Add Testimonial
+  </button>
+</div>
+
+<div class="data-table-wrap">
+  <table class="data-table" aria-label="Testimonials table">
+    <thead>
+      <tr>
+        <th scope="col">Author</th>
+        <th scope="col">Testimony</th>
+        <th scope="col">Status</th>
+        <th scope="col">Sort Order</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (testimonialsResource.isLoading()) {
+        @for (_ of [1, 2, 3, 4, 5]; track $index) {
+          <tr class="tbl-skeleton">
+            <td><div class="skeleton skeleton-title"></div></td>
+            <td><div class="skeleton skeleton-sm"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+          </tr>
+        }
+      } @else if (testimonials().length === 0) {
+        <tr>
+          <td colspan="5">
+            <div class="tbl-empty">
+              <i class="ph-duotone ph-quotes" aria-hidden="true"></i>
+              <p>No testimonials found</p>
+            </div>
+          </td>
+        </tr>
+      } @else {
+        @for (testimonial of testimonials(); track testimonial.id) {
+          <tr>
+            <td>
+              <div class="tbl-avatar-cell">
+                <div class="tbl-avatar tbl-avatar--testimonial" aria-hidden="true">{{ initials(testimonial.name) }}</div>
+                <div class="col-name">{{ testimonial.name }}</div>
+              </div>
+            </td>
+            <td class="col-muted col-testimony">{{ truncate(testimonial.testimony) }}</td>
+            <td>
+              @if (testimonial.isActive) {
+                <span class="badge badge-active">Active</span>
+              } @else {
+                <span class="badge badge-inactive">Inactive</span>
+              }
+            </td>
+            <td class="col-sort">{{ testimonial.sortOrder }}</td>
+            <td>
+              <div class="tbl-actions">
+                <button type="button" class="btn-icon" aria-label="Edit testimonial" (click)="openEdit(testimonial)">
+                  <i class="ph ph-pencil-simple" aria-hidden="true"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn-icon btn-icon-danger"
+                  aria-label="Delete testimonial"
+                  (click)="delete(testimonial)"
+                >
+                  <i class="ph ph-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,205 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/construction_survey.jpg" alt="Engineering and construction survey" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Our Services</div>
+      <h1>Engineering<br>&amp; <em>Construction</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <a href="index.html#services">Services</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Engineering &amp; Construction Survey</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE INTRO ===== -->
+<section class="svc-intro">
+  <div class="container">
+    <div>
+      <div class="lbl">Engineering Survey</div>
+      <h2 class="svc-intro-h2">Precision Layouts for<br>Modern Infrastructure</h2>
+      <p class="svc-intro-p">GeoMapping Pty Ltd provides professional engineering and construction survey services that support accurate project delivery from initial planning through to final completion. Our team works closely with engineers, architects, and project managers to ensure every element is positioned exactly where it belongs.</p>
+      <p class="svc-intro-p">Using advanced total stations, GPS/GNSS, and 3D laser scanners, we deliver the high-precision data required for complex infrastructure, commercial builds, and industrial developments across South Africa.</p>
+      <ul class="about-checks">
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Setting out and construction layout for civil and structural projects
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Detailed as-built surveys for design verification and compliance
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Continuous deformation and structural stability monitoring
+        </li>
+      </ul>
+      <div class="about-foot" style="margin-top: 32px;">
+        <a href="contact.html" class="btn-fill">Enquire Now <i class="ph ph-arrow-right"></i></a>
+        <a href="contact.html" class="btn-line">Contact Us <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="svc-intro-vis">
+      <img src="images/construction_survey.jpg" alt="Construction survey team" class="svc-intro-img">
+      <div class="svc-intro-badge">
+        <i class="ph ph-ruler"></i>
+        <small>Precision<br>Experts</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT THIS SERVICE COVERS ===== -->
+<section class="covers">
+  <div class="container">
+    <div class="covers-hd">
+      <div class="lbl">Service Scope</div>
+      <h2>What This Service Covers</h2>
+    </div>
+    <div class="covers-grid">
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-bounding-box"></i></div>
+        <div class="covers-num">01</div>
+        <h4>Setting Out Surveys</h4>
+        <p>Transferring design coordinates from the drawing board to the site with extreme precision, marking foundations, grids, and utilities.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-check-square"></i></div>
+        <div class="covers-num">02</div>
+        <h4>As-Built Verification</h4>
+        <p>Providing final records of the finished construction to verify that the build matches the design and meets all regulatory standards.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-activity"></i></div>
+        <div class="covers-num">03</div>
+        <h4>Deformation Monitoring</h4>
+        <p>Tracking movement in buildings, bridges, and terrain over time to ensure structural integrity and early identification of potential risks.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-mountains"></i></div>
+        <div class="covers-num">04</div>
+        <h4>Topographic Site Mapping</h4>
+        <p>Creating highly detailed base maps of existing terrain and features to support architectural design and civil engineering planning.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-road-horizon"></i></div>
+        <div class="covers-num">05</div>
+        <h4>Infrastructure Monitoring</h4>
+        <p>Regular safety and stability checks on critical infrastructure such as roads, dams, and bridges using high-precision survey methods.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CLIENTS CHOOSE GEOMAPPING ===== -->
+<section class="why">
+  <div class="container">
+    <div class="why-img-w">
+      <img src="images/pexels-kokorevas-20178416.jpg" alt="Surveying equipment">
+      <div class="why-badge">
+        <strong>100%</strong>
+        Accuracy<br>Guaranteed
+      </div>
+    </div>
+    <div class="why-cont">
+      <div class="lbl">Why Choose Us</div>
+      <h2>The Foundation of<br>Accurate Construction</h2>
+      <div class="why-list">
+        <div class="why-item" [class.active]="activeWhyItem() === 0" (click)="activeWhyItem.set(0)">
+          <div class="why-n">01</div>
+          <div class="why-txt">
+            <h4>Centimetre-Level Precision</h4>
+            <p>We use the highest grade surveying instruments to ensure that every measurement is accurate to the millimetre, reducing costly construction errors.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 1" (click)="activeWhyItem.set(1)">
+          <div class="why-n">02</div>
+          <div class="why-txt">
+            <h4>Fast Data Turnaround</h4>
+            <p>Our efficient field and office workflows mean your construction team isn't left waiting for survey data, keeping your project on schedule.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 2" (click)="activeWhyItem.set(2)">
+          <div class="why-n">03</div>
+          <div class="why-txt">
+            <h4>Experienced Site Teams</h4>
+            <p>Our surveyors are familiar with the complexities of active construction sites and work safely and effectively alongside other contractors.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 3" (click)="activeWhyItem.set(3)">
+          <div class="why-n">04</div>
+          <div class="why-txt">
+            <h4>Digital-Ready Deliverables</h4>
+            <p>We provide all survey data in formats ready for BIM, CAD, and other engineering software, ensuring seamless integration into your project workflow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED SERVICES ===== -->
+<section class="rel-svcs">
+  <div class="container">
+    <div class="rel-svcs-hd">
+      <div class="lbl">Explore More</div>
+      <h2>Related Services</h2>
+    </div>
+    <div class="rel-grid">
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-drone"></i></div>
+        <h4>Aerial Survey &amp; GIS</h4>
+        <p>High-resolution drone photogrammetry, LiDAR scanning, and GIS spatial analysis delivering precise geospatial intelligence.</p>
+        <a href="aerial-survey-gis.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-hard-hat"></i></div>
+        <h4>Mining Surveying &amp; Planning</h4>
+        <p>Professional mining surveying and planning solutions supporting safe, efficient, and compliant operations.</p>
+        <a href="msp.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-shield-check"></i></div>
+        <h4>Aerial Security Solutions</h4>
+        <p>Drone-based crime monitoring, traffic management, and critical infrastructure surveillance solutions.</p>
+        <a href="aerial-security.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-users-three"></i></div>
+        <h4>Community Programs</h4>
+        <p>Skills development, geospatial training initiatives, and environmental awareness programmes supporting local communities.</p>
+        <a href="community-programs.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-ban">
+  <div class="cta-ban-bg">
+    <img src="images/pexels-printexstar-11680715.jpg" alt="GeoMapping construction survey">
+  </div>
+  <div class="cta-ban-ov"></div>
+  <div class="container cta-ban-inner">
+    <div class="lbl">Get Started</div>
+    <h2>Build with Confidence through <em>Precise Surveys</em></h2>
+    <a href="contact.html" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+      Enquire Now <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>

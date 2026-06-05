@@ -1,0 +1,14 @@
+.col-name {
+  font-weight: 600;
+}
+
+.col-sub {
+  font-size: 12px;
+  color: #888;
+  margin-top: 1px;
+}
+
+.col-muted {
+  color: #888;
+  white-space: nowrap;
+}

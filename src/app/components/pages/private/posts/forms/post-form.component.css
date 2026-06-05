@@ -1,0 +1,21 @@
+.post-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 20px;
+  margin-bottom: 4px;
+}
+
+.content-textarea {
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
+}
+
+.form-optional {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #aaa;
+  margin-left: 4px;
+}

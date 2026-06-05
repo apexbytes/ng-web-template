@@ -1,0 +1,106 @@
+<div class="dialog-header">
+  <h4>{{ isEdit ? 'Edit Post' : 'Create Post' }}</h4>
+  <button type="button" class="close_dialog" (click)="close()" aria-label="Close">
+    <i class="ph ph-x" aria-hidden="true"></i>
+  </button>
+</div>
+
+<div class="dialog-content">
+  <form [formGroup]="form" id="post-form" (ngSubmit)="submit()">
+
+    <!-- Top row: metadata fields -->
+    <div class="post-form-grid">
+
+      <div class="form-group">
+        <label for="post-title">Title</label>
+        <input
+          id="post-title"
+          type="text"
+          formControlName="title"
+          class="form-control"
+          [class.is-invalid]="titleCtrl.invalid && titleCtrl.touched"
+          placeholder="Enter post title"
+        />
+        @if (titleCtrl.touched && titleCtrl.hasError('required')) {
+          <span class="field-error">Title is required</span>
+        } @else if (titleCtrl.touched && titleCtrl.hasError('minlength')) {
+          <span class="field-error">Title must be at least 3 characters</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="post-status">Status</label>
+        <select id="post-status" formControlName="status" class="form-control">
+          <option value="DRAFT">Draft</option>
+          <option value="PUBLISHED">Published</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Full-width image upload -->
+    <div class="form-group">
+      <label>Cover Image <span class="form-optional">(optional)</span></label>
+      @if (previewUrl()) {
+        <div class="img-preview-wrap">
+          <img [src]="previewUrl()!" alt="Cover preview" class="img-preview" />
+          @if (selectedFile()) {
+            <button type="button" class="img-remove-btn" (click)="clearFile()" aria-label="Remove selected image">
+              <i class="ph ph-x" aria-hidden="true"></i>
+            </button>
+          }
+        </div>
+      }
+      <label class="file-drop-zone" for="post-image">
+        <i class="ph-duotone ph-image" aria-hidden="true"></i>
+        <p>{{ selectedFile() ? selectedFile()!.name : 'Click to upload image' }}</p>
+        <small>JPEG, PNG, WebP · Max 5 MB</small>
+        <input
+          id="post-image"
+          type="file"
+          accept="image/*"
+          style="display:none"
+          (change)="onFileChange($event)"
+        />
+      </label>
+    </div>
+
+    <!-- Full-width content editor -->
+    <div class="form-group">
+      <label>Content</label>
+      <app-rich-editor
+        formControlName="content"
+        [invalid]="contentCtrl.invalid && contentCtrl.touched"
+        placeholder="Write your post content…"
+      ></app-rich-editor>
+      @if (contentCtrl.touched && contentCtrl.hasError('required')) {
+        <span class="field-error">Content is required</span>
+      } @else if (contentCtrl.touched && contentCtrl.hasError('minlength')) {
+        <span class="field-error">Content must be at least 10 characters</span>
+      }
+    </div>
+
+  </form>
+</div>
+
+<div class="dialog-actions">
+  <button
+    type="button"
+    class="btn-dash btn-dash-secondary"
+    (click)="close()"
+    [disabled]="loading()"
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+    form="post-form"
+    class="btn-dash btn-dash-primary"
+    [disabled]="loading()"
+  >
+    @if (loading()) {
+      <i class="ph ph-circle-notch spin" aria-hidden="true"></i>
+    }
+    {{ isEdit ? 'Save Changes' : 'Create Post' }}
+  </button>
+</div>

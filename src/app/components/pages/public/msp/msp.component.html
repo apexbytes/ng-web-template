@@ -1,0 +1,205 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/mine_survey.jpg" alt="Mining survey operations" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Our Services</div>
+      <h1>Mining Surveying<br>&amp; <em>Planning</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <a href="index.html#services">Services</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Mining Surveying &amp; Planning</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE INTRO ===== -->
+<section class="svc-intro">
+  <div class="container">
+    <div>
+      <div class="lbl">Mining Surveying</div>
+      <h2 class="svc-intro-h2">Mining Decisions Backed<br>by Precise, Reliable Data</h2>
+      <p class="svc-intro-p">Mining decisions are only as good as the data behind them. At GeoMapping Pty Ltd, our mining surveying and planning solutions are built to give you confidence at every stage of your operation — from early planning through active production and ongoing compliance.</p>
+      <p class="svc-intro-p">We specialise in mine-focused geospatial and survey services that support safe, efficient, and well-controlled mining environments. Whether you are operating an open cast or underground mine, accurate spatial data is critical — and that is exactly what we deliver.</p>
+      <ul class="about-checks">
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          SACAA-certified team with deep mining sector experience
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Solutions tailored for real operating conditions across South Africa
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Supporting statutory, compliance, and reporting requirements
+        </li>
+      </ul>
+      <div class="about-foot" style="margin-top: 32px;">
+        <a href="contact.html" class="btn-fill">Enquire Now <i class="ph ph-arrow-right"></i></a>
+        <a href="contact.html" class="btn-line">Contact Us <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="svc-intro-vis">
+      <img src="images/mine_survey.jpg" alt="Mining survey operations" class="svc-intro-img">
+      <div class="svc-intro-badge">
+        <i class="ph ph-hard-hat"></i>
+        <small>Mining<br>Experts</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT THIS SERVICE COVERS ===== -->
+<section class="covers">
+  <div class="container">
+    <div class="covers-hd">
+      <div class="lbl">Service Scope</div>
+      <h2>What This Service Covers</h2>
+    </div>
+    <div class="covers-grid">
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-hard-hat"></i></div>
+        <div class="covers-num">01</div>
+        <h4>Open Cast &amp; Underground Mine Surveys</h4>
+        <p>Comprehensive surface and underground spatial data collection using the latest survey equipment, providing accurate records for mine control and planning.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-map-trifold"></i></div>
+        <div class="covers-num">02</div>
+        <h4>Mine Layout &amp; Planning Support</h4>
+        <p>Precise spatial data and GIS-driven mine layout services that support operational planning, design, and long-term development decision-making.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-chart-bar"></i></div>
+        <div class="covers-num">03</div>
+        <h4>Production &amp; Volume Measurement Surveys</h4>
+        <p>Regular production surveys and volumetric calculations that give mine operators real-time visibility into extraction rates, material movement, and progress.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-scales"></i></div>
+        <div class="covers-num">04</div>
+        <h4>Stockpile &amp; Material Movement Verification</h4>
+        <p>Accurate stockpile volume measurements and material movement tracking using drone photogrammetry and conventional survey methods for reliable reconciliation.</p>
+      </div>
+      <div class="covers-item">
+        <div class="covers-icon"><i class="ph ph-clipboard-text"></i></div>
+        <div class="covers-num">05</div>
+        <h4>Statutory, Compliance &amp; Reporting Surveys</h4>
+        <p>All statutory mine survey requirements met accurately and on schedule — supporting legal compliance, audit readiness, and regulatory reporting obligations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY MINING CLIENTS CHOOSE GEOMAPPING ===== -->
+<section class="why">
+  <div class="container">
+    <div class="why-img-w">
+      <img src="images/pexels-kokorevas-20178416.jpg" alt="GeoMapping mining survey team">
+      <div class="why-badge">
+        <strong>100%</strong>
+        Precision<br>Guaranteed
+      </div>
+    </div>
+    <div class="why-cont">
+      <div class="lbl">Why Choose Us</div>
+      <h2>Why Mining Clients<br>Choose GeoMapping</h2>
+      <div class="why-list">
+        <div class="why-item" [class.active]="activeWhyItem() === 0" (click)="activeWhyItem.set(0)">
+          <div class="why-n">01</div>
+          <div class="why-txt">
+            <h4>Improved Operational Efficiency</h4>
+            <p>Our fast turnaround on survey data means mine operators can make better scheduling, production, and logistics decisions without waiting on bottlenecked data.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 1" (click)="activeWhyItem.set(1)">
+          <div class="why-n">02</div>
+          <div class="why-txt">
+            <h4>Reduced Safety &amp; Planning Risk</h4>
+            <p>Accurate geospatial data underpins every safety decision underground and on surface. We help reduce planning risks before they become operational hazards.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 2" (click)="activeWhyItem.set(2)">
+          <div class="why-n">03</div>
+          <div class="why-txt">
+            <h4>Regulatory &amp; Statutory Compliance</h4>
+            <p>We understand South African mining legislation and ensure every survey deliverable meets the statutory requirements expected by the DMR and other regulators.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 3" (click)="activeWhyItem.set(3)">
+          <div class="why-n">04</div>
+          <div class="why-txt">
+            <h4>Decisions Backed by Reliable Data</h4>
+            <p>From reserve estimates to expansion plans, every strategic mining decision should rest on trustworthy spatial data — that is the foundation of everything we deliver.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED SERVICES ===== -->
+<section class="rel-svcs">
+  <div class="container">
+    <div class="rel-svcs-hd">
+      <div class="lbl">Explore More</div>
+      <h2>Related Services</h2>
+    </div>
+    <div class="rel-grid">
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-drone"></i></div>
+        <h4>Aerial Survey &amp; GIS</h4>
+        <p>High-resolution drone photogrammetry, LiDAR scanning, and GIS spatial analysis delivering precise geospatial intelligence across any terrain.</p>
+        <a href="contact.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-ruler"></i></div>
+        <h4>Engineering &amp; Construction Survey</h4>
+        <p>Setting-out, as-built, and deformation surveys supporting accurate project delivery from initial design through to final construction completion.</p>
+        <a href="contact.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-shield-check"></i></div>
+        <h4>Aerial Security Solutions</h4>
+        <p>Drone-based crime monitoring, traffic management, and critical infrastructure surveillance solutions for mines and high-value assets.</p>
+        <a href="contact.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="rel-card">
+        <div class="rel-icon"><i class="ph ph-users-three"></i></div>
+        <h4>Community Programs</h4>
+        <p>Skills development, geospatial training initiatives, and environmental awareness programmes supporting local communities near our project areas.</p>
+        <a href="contact.html" class="rel-lnk">Learn More <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-ban">
+  <div class="cta-ban-bg">
+    <img src="images/pexels-davidelocatelli-2383650.jpg" alt="GeoMapping field operations">
+  </div>
+  <div class="cta-ban-ov"></div>
+  <div class="container cta-ban-inner">
+    <div class="lbl">Get Started</div>
+    <h2>Ready to Start Your <em>Mine Survey?</em></h2>
+    <a href="contact.html" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+      Enquire Now <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>

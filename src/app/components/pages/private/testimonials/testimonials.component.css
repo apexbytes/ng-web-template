@@ -1,0 +1,45 @@
+.tbl-avatar--testimonial {
+  background: #0369a1;
+}
+
+.col-name {
+  font-weight: 600;
+}
+
+.col-muted {
+  color: #888;
+}
+
+.col-testimony {
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-sort {
+  color: #888;
+  font-variant-numeric: tabular-nums;
+  width: 80px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.badge-active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.badge-inactive {
+  background: #f1f5f9;
+  color: #94a3b8;
+}

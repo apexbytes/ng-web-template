@@ -1,0 +1,117 @@
+<h2 class="auth-title">Set up your account</h2>
+<p class="auth-subtitle">
+  You've been invited to join GeoMapping. Enter your name and create a password to activate your account.
+</p>
+
+<!-- Invited-as banner -->
+@if (invitedEmail) {
+  <div class="invited-as" aria-label="Invited email address">
+    <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+    <span>{{ invitedEmail }}</span>
+  </div>
+}
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+
+  <!-- Full name -->
+  <div class="form-group">
+    <label for="ai-fullname">Full Name</label>
+    <input
+      type="text"
+      id="ai-fullname"
+      formControlName="fullName"
+      placeholder="e.g. Jane Smith"
+      autocomplete="name"
+      [class.is-invalid]="form.controls.fullName.invalid && form.controls.fullName.touched"
+    >
+    @if (form.controls.fullName.touched) {
+      @if (form.controls.fullName.hasError('required')) {
+        <span class="field-error" role="alert">Full name is required.</span>
+      } @else if (form.controls.fullName.hasError('minlength')) {
+        <span class="field-error" role="alert">Name must be at least 2 characters.</span>
+      }
+    }
+  </div>
+
+  <!-- Password -->
+  <div class="form-group">
+    <label for="ai-password">Password</label>
+    <div class="input-wrap">
+      <input
+        [type]="showPassword() ? 'text' : 'password'"
+        id="ai-password"
+        formControlName="password"
+        placeholder="Minimum 8 characters"
+        autocomplete="new-password"
+        [class.is-invalid]="form.controls.password.invalid && form.controls.password.touched"
+      >
+      <button
+        type="button"
+        class="pw-toggle"
+        (click)="togglePassword()"
+        [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+      >
+        <i [class]="showPassword() ? 'ph ph-eye-slash' : 'ph ph-eye'"></i>
+      </button>
+    </div>
+    @if (form.controls.password.touched) {
+      @if (form.controls.password.hasError('required')) {
+        <span class="field-error" role="alert">Password is required.</span>
+      } @else if (form.controls.password.hasError('minlength')) {
+        <span class="field-error" role="alert">Password must be at least 8 characters.</span>
+      }
+    }
+  </div>
+
+  <!-- Confirm password -->
+  <div class="form-group">
+    <label for="ai-confirm">Confirm Password</label>
+    <div class="input-wrap">
+      <input
+        [type]="showConfirm() ? 'text' : 'password'"
+        id="ai-confirm"
+        formControlName="confirmPassword"
+        placeholder="Re-enter your password"
+        autocomplete="new-password"
+        [class.is-invalid]="form.controls.confirmPassword.touched &&
+          (form.controls.confirmPassword.hasError('required') || form.hasError('mismatch'))"
+      >
+      <button
+        type="button"
+        class="pw-toggle"
+        (click)="toggleConfirm()"
+        [attr.aria-label]="showConfirm() ? 'Hide password' : 'Show password'"
+      >
+        <i [class]="showConfirm() ? 'ph ph-eye-slash' : 'ph ph-eye'"></i>
+      </button>
+    </div>
+    @if (form.controls.confirmPassword.touched) {
+      @if (form.controls.confirmPassword.hasError('required')) {
+        <span class="field-error" role="alert">Please confirm your password.</span>
+      } @else if (form.hasError('mismatch')) {
+        <span class="field-error" role="alert">Passwords do not match.</span>
+      }
+    }
+  </div>
+
+  <!-- Submit -->
+  <button
+    type="submit"
+    class="auth-submit"
+    [disabled]="loading()"
+    [attr.aria-busy]="loading()"
+  >
+    @if (loading()) {
+      <i class="ph ph-circle-notch spin" aria-hidden="true"></i> Activating…
+    } @else {
+      Activate Account <i class="ph ph-user-check" aria-hidden="true"></i>
+    }
+  </button>
+
+</form>
+
+<div class="auth-back">
+  <a routerLink="/auth/login">
+    <i class="ph ph-arrow-left" aria-hidden="true"></i> Already have an account? Sign In
+  </a>
+</div>

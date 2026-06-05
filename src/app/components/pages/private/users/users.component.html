@@ -1,0 +1,116 @@
+<div class="page-hdr">
+  <h1 class="page-hdr-title">Users</h1>
+  <button type="button" class="btn-dash btn-dash-primary" (click)="openInvite()">
+    <i class="ph ph-user-plus" aria-hidden="true"></i>
+    Invite User
+  </button>
+</div>
+
+<div class="data-table-wrap">
+  <table class="data-table" aria-label="Users table">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Role</th>
+        <th scope="col">Member Since</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (usersResource.isLoading()) {
+        @for (_ of [1, 2, 3, 4, 5, 6, 7, 8]; track $index) {
+          <tr class="tbl-skeleton">
+            <td><div class="skeleton skeleton-title"></div></td>
+            <td><div class="skeleton skeleton-sm"></div></td>
+            <td><div class="skeleton skeleton-sm"></div></td>
+            <td><div class="skeleton skeleton-xs"></div></td>
+          </tr>
+        }
+      } @else if (users().length === 0) {
+        <tr>
+          <td colspan="4">
+            <div class="tbl-empty">
+              <i class="ph-duotone ph-users-four" aria-hidden="true"></i>
+              <p>No users found</p>
+            </div>
+          </td>
+        </tr>
+      } @else {
+        @for (user of users(); track user.id) {
+          <tr>
+            <td>
+              <div class="tbl-avatar-cell">
+                <div class="tbl-avatar" aria-hidden="true">{{ initials(user.fullName) }}</div>
+                <div>
+                  <div class="col-name">{{ user.fullName }}</div>
+                  <div class="col-sub">{{ user.email }}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span [class]="roleBadgeClass(user.role)">{{ user.role }}</span>
+            </td>
+            <td class="col-muted">{{ user.createdAt | date:'dd MMM yyyy' }}</td>
+            <td>
+              <div class="tbl-actions">
+                <button
+                  type="button"
+                  class="btn-icon btn-icon-danger"
+                  [disabled]="user.id === currentUserId()"
+                  [title]="user.id === currentUserId() ? 'Cannot delete your own account' : 'Delete user'"
+                  aria-label="Delete user"
+                  (click)="deleteUser(user.id)"
+                >
+                  <i class="ph ph-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+
+  @if (!usersResource.isLoading() && (meta()?.total ?? 0) > 0) {
+    <div class="pagination" role="navigation" aria-label="Table pagination">
+      <span class="pg-info">
+        Showing {{ showingFrom() }}–{{ showingTo() }} of {{ meta()!.total }} results
+      </span>
+      <div class="pg-controls">
+        <button
+          type="button"
+          class="pg-btn"
+          [disabled]="pagination.page() === 1"
+          (click)="pagination.prev()"
+          aria-label="Previous page"
+        >
+          <i class="ph ph-caret-left" aria-hidden="true"></i>
+        </button>
+
+        @for (p of pageRange(); track $index) {
+          @if (p === null) {
+            <span class="pg-ellipsis" aria-hidden="true">…</span>
+          } @else {
+            <button
+              type="button"
+              class="pg-btn"
+              [class.active]="p === pagination.page()"
+              [attr.aria-current]="p === pagination.page() ? 'page' : null"
+              (click)="pagination.goTo(p)"
+            >{{ p }}</button>
+          }
+        }
+
+        <button
+          type="button"
+          class="pg-btn"
+          [disabled]="pagination.page() >= totalPages()"
+          (click)="pagination.next()"
+          aria-label="Next page"
+        >
+          <i class="ph ph-caret-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  }
+</div>
