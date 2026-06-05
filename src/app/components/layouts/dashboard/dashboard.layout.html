@@ -1,1 +1,95 @@
-<router-outlet />
+<div class="dashboard-container" [class.sidebar-collapsed]="isSidebarCollapsed()">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <i class="ph-duotone ph-map-trifold"></i>
+        <span class="logo-text">GeoMapping</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a routerLink="/d" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" title="Dashboard">
+            <i class="ph-duotone ph-layout"></i>
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/d/projects" routerLinkActive="active" title="Projects">
+            <i class="ph ph-briefcase"></i>
+            <span class="nav-text">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/d/posts" routerLinkActive="active" title="Posts">
+            <i class="ph-duotone ph-article"></i>
+            <span class="nav-text">Posts</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/d/users" routerLinkActive="active" title="Users">
+            <i class="ph-duotone ph-users-four"></i>
+            <span class="nav-text">Users</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/d/team" routerLinkActive="active" title="Team">
+            <i class="ph-duotone ph-microsoft-teams-logo"></i>
+            <span class="nav-text">Team</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/d/testimonials" routerLinkActive="active" title="Testimonials">
+            <i class="ph-duotone ph-quotes"></i>
+            <span class="nav-text">Testimonials</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="dashboard-header">
+      <div class="header-left">
+        <button class="toggle-btn" (click)="toggleSidebar()" aria-label="Toggle Sidebar">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+      <div class="header-right">
+        <div class="user-profile-wrapper">
+          <button
+            type="button"
+            class="user-profile"
+            (click)="toggleDropdown($event)"
+            [attr.aria-expanded]="isDropdownOpen()"
+            aria-haspopup="true"
+            aria-label="User menu"
+          >
+            <span class="user-name">{{ user()?.fullName ?? 'Admin' }}</span>
+            <div class="user-avatar" aria-hidden="true">{{ userInitial() }}</div>
+            <i class="ph ph-caret-down dropdown-caret" [class.open]="isDropdownOpen()" aria-hidden="true"></i>
+          </button>
+
+          @if (isDropdownOpen()) {
+            <div class="user-dropdown" role="menu" (click)="$event.stopPropagation()">
+              <div class="dropdown-user-info">
+                <span class="dropdown-user-name">{{ user()?.fullName ?? 'Admin' }}</span>
+                <span class="dropdown-user-email">{{ user()?.email }}</span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <button type="button" class="dropdown-item" role="menuitem" (click)="logout()">
+                <i class="ph ph-sign-out" aria-hidden="true"></i>
+                Logout
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

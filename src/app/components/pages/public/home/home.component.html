@@ -1,1 +1,368 @@
-<p>home.component works!</p>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img src="images/aerial_survey.jpg" alt="Aerial survey operations" class="hero-bg">
+  <div class="hero-ov"></div>
+  <div class="container">
+    <div class="hero-body">
+      <div class="hero-lbl">
+        <div class="hero-lbl-line"></div>
+        Our Vision
+      </div>
+      <h1>Advanced Surveying,<br><em>Aerial Intelligence &amp; Geospatial Solutions</em></h1>
+      <p class="hero-sub">GeoMapping Pty Ltd is the top provider of advanced Mining Surveying, Planning, and Geospatial solutions in South Africa, leveraging over five years of industry experience and a highly qualified, SACAA-certified team.</p>
+      <div class="hero-acts">
+        <a href="#about" class="btn-fill">Discover More <i class="ph ph-arrow-right"></i></a>
+        <div class="hero-play-btn">
+          <div class="hero-circle"><i class="ph ph-play"></i></div>
+          Watch Video
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="container">
+    <!-- left column -->
+    <div>
+      <div class="lbl">About Us</div>
+      <h2 class="about-h2">South Africa's Leading<br>Geospatial Solutions Provider</h2>
+      <p class="about-p">GeoMapping Pty Ltd is the top provider of advanced Mining Surveying, Planning, and Geospatial solutions in South Africa. Leveraging over five years of industry experience and a highly qualified, SACAA-certified team, we are committed to delivering precision and reliability across aerial mapping, LiDAR, Thermal, GIS, Orthophotography, Scanning, and UAV/drone services.</p>
+      <ul class="about-checks">
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          SACAA-certified team for all aerial and drone operations
+        </li>
+        <li>
+          <div class="check-dot"><i class="ph ph-check"></i></div>
+          Over five years of proven industry experience across South Africa
+        </li>
+      </ul>
+      <div class="about-foot">
+        <div class="about-ph-box">
+          <div class="about-ph-ic"><i class="ph ph-phone"></i></div>
+          <div>
+            <small>Call Anytime</small>
+            <strong>+27 (0)72 944 5830</strong>
+          </div>
+        </div>
+        <div>
+          <div class="avs">
+            <div class="av av1">GM</div>
+            <div class="av av2">SA</div>
+            <div class="av av3">ZA</div>
+          </div>
+          <div class="avs-lbl" style="margin-top:6px;">
+            <strong>Our Expert Team</strong>
+            SACAA-certified professionals
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- right column -->
+    <div class="about-vis">
+      <img src="images/mine_survey.jpg" alt="GeoMapping mining survey operations" class="about-main-img">
+      <div class="about-badge">
+        <span>5+</span>
+        <small>Years<br>Experience</small>
+      </div>
+      <div class="about-vid">
+        <img src="images/construction_survey.jpg" alt="Engineering and construction survey">
+        <div class="about-vid-ov">
+          <div class="play-ic"><i class="ph ph-play"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="svc-hd">
+      <div class="lbl">What We Do</div>
+      <h2>We provide excellent service<br>to our customers</h2>
+    </div>
+    <div class="svc-layout">
+      <!-- tabs -->
+      <div class="svc-tabs">
+        <div class="svc-tab" [class.active]="activeIndex() === 0" (click)="selectService(0)">
+          <div class="svc-tab-l"><i class="ph ph-hard-hat"></i> Mining Surveying &amp; Planning</div>
+          <i class="ph ph-caret-right"></i>
+        </div>
+        <div class="svc-tab" [class.active]="activeIndex() === 1" (click)="selectService(1)">
+          <div class="svc-tab-l"><i class="ph ph-map-trifold"></i> Aerial Survey &amp; GIS</div>
+          <i class="ph ph-caret-right"></i>
+        </div>
+        <div class="svc-tab" [class.active]="activeIndex() === 2" (click)="selectService(2)">
+          <div class="svc-tab-l"><i class="ph ph-ruler"></i> Engineering Survey</div>
+          <i class="ph ph-caret-right"></i>
+        </div>
+        <div class="svc-tab" [class.active]="activeIndex() === 3" (click)="selectService(3)">
+          <div class="svc-tab-l"><i class="ph ph-shield-check"></i> Aerial Security Solutions</div>
+          <i class="ph ph-caret-right"></i>
+        </div>
+        <div class="svc-tab" [class.active]="activeIndex() === 4" (click)="selectService(4)">
+          <div class="svc-tab-l"><i class="ph ph-users-three"></i> Community Programs</div>
+          <i class="ph ph-caret-right"></i>
+        </div>
+      </div>
+      <!-- panel -->
+      <div class="svc-panel">
+        <div class="svc-img-w">
+          <img [src]="activeSvc().img" [class.fading]="imgFading()" alt="Service image">
+          <div class="svc-n">{{ activeSvc().num }}</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-main">
+            <h3>{{ activeSvc().title }}</h3>
+            <p>{{ activeSvc().desc }}</p>
+            <ul>
+              @for (item of activeSvc().list; track item) {
+                <li><i class="ph ph-check-circle"></i> {{ item }}</li>
+              }
+            </ul>
+            <a [routerLink]="activeSvc().route" class="btn-fill">More Details <i class="ph ph-arrow-right"></i></a>
+          </div>
+          <div class="svc-badge-n">
+            <small>Service</small>
+            <span>{{ activeSvc().num }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-img-w">
+      <img src="images/pexels-iwashere-15109992.jpg" alt="GeoMapping drilling equipment">
+      <div class="why-badge">
+        <strong>SACAA</strong>
+        Certified Team
+      </div>
+    </div>
+    <div class="why-cont">
+      <div class="lbl">Why GeoMapping</div>
+      <h2>Why choose us</h2>
+      <div class="why-list">
+        <div class="why-item" [class.active]="activeWhyItem() === 0" (click)="activeWhyItem.set(0)">
+          <div class="why-n">01</div>
+          <div class="why-txt">
+            <h4>SACAA-Certified Team</h4>
+            <p>Our entire aerial operations team holds full SACAA certification, ensuring every drone and aerial mission is executed legally, safely, and to the highest professional standard.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 1" (click)="activeWhyItem.set(1)">
+          <div class="why-n">02</div>
+          <div class="why-txt">
+            <h4>Precision Technology</h4>
+            <p>We deploy the latest LiDAR, drone, Thermal, and GIS technologies to deliver centimetre-accurate results for mining, engineering, and geospatial projects.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 2" (click)="activeWhyItem.set(2)">
+          <div class="why-n">03</div>
+          <div class="why-txt">
+            <h4>5+ Years of Experience</h4>
+            <p>With over five years of proven industry experience across mining, construction, and aerial surveying sectors, we bring deep expertise to every engagement.</p>
+          </div>
+        </div>
+        <div class="why-item" [class.active]="activeWhyItem() === 3" (click)="activeWhyItem.set(3)">
+          <div class="why-n">04</div>
+          <div class="why-txt">
+            <h4>Nationwide Coverage</h4>
+            <p>Operating across South Africa with branches in Mpumalanga and KwaZulu-Natal, we are positioned to serve clients wherever their projects are located.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+@if (projects().length) {
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="lbl">Projects</div>
+          <h2>Explore recent projects</h2>
+        </div>
+        <a href="#" class="btn-line">See All Projects <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="proj-grid">
+        @for (project of projects(); track project.id) {
+          <div class="proj-card">
+            <div class="proj-imgw">
+              @if (project.imageUrl) {
+                <img [src]="project.imageUrl" [alt]="project.title">
+              }
+              @if (project.tag) {
+                <div class="proj-cat">{{ tagLabel(project.tag) }}</div>
+              }
+              <div class="proj-ov"><div class="proj-ov-ic"><i class="ph ph-arrow-up-right"></i></div></div>
+            </div>
+            <div class="proj-info">
+              <h3>{{ project.title }}</h3>
+              <time>{{ project.createdAt | date:'MMM d, y' }}</time>
+              <div><a [routerLink]="['/projects', project.id]" class="proj-lnk">Explore Project <i class="ph ph-arrow-right"></i></a></div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>
+
+<!-- ===== CTA STRIP ===== -->
+<section class="cta-strip">
+  <div class="container">
+    <div>
+      <div class="lbl">Contact Us</div>
+      <h2>Have a project in mind?</h2>
+    </div>
+    <a href="#" class="btn-fill" style="font-size:12px;padding:18px 36px;">
+      Contact Us <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+@if (testimonials().length) {
+  <section class="testis">
+    <div class="container">
+      <div class="testis-hd">
+        <div class="lbl">Testimonials</div>
+        <h2>What client saying about us</h2>
+      </div>
+      <div class="testi-grid">
+        @for (testimonial of testimonials(); track testimonial.id; let i = $index) {
+          <div class="testi-card">
+            <div class="testi-quote">"</div>
+            <div class="testi-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <p class="testi-txt">{{ testimonial.testimony }}</p>
+            <div class="testi-auth">
+              @if (testimonial.imageUrl) {
+                <div class="testi-av testi-av-img">
+                  <img [src]="testimonial.imageUrl" [alt]="testimonial.name">
+                </div>
+              } @else {
+                <div class="testi-av" [class.ta1]="i % 3 === 0" [class.ta2]="i % 3 === 1" [class.ta3]="i % 3 === 2">
+                  {{ initials(testimonial.name) }}
+                </div>
+              }
+              <div>
+                <div class="testi-nm">{{ testimonial.name }}</div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ===== TEAM ===== -->
+@if (team().length) {
+  <section class="team" id="team">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="lbl">Our Team</div>
+          <h2>Meet our expert team</h2>
+        </div>
+        <a href="#" class="btn-line">See All Team <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="team-grid">
+        @for (member of team(); track member.id) {
+          <div class="team-card">
+            <div class="team-imgw">
+              @if (member.imageUrl) {
+                <img [src]="member.imageUrl" [alt]="member.name">
+              }
+              @if (member.socials?.length) {
+                <div class="team-soc">
+                  @for (social of member.socials!; track social.platform) {
+                    <a [href]="social.link" class="team-sb" target="_blank" rel="noopener noreferrer">
+                      <i [class]="socialIcon(social.platform)"></i>
+                    </a>
+                  }
+                </div>
+              }
+            </div>
+            <div class="team-inf">
+              <h3>{{ member.name }}</h3>
+              <span>{{ member.title }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-ban">
+  <div class="cta-ban-bg">
+    <img src="images/pexels-iwashere-15109992.jpg" alt="Construction">
+  </div>
+  <div class="cta-ban-ov"></div>
+  <div class="container cta-ban-inner">
+    <div class="lbl">Get Started</div>
+    <h2>Your Survey <em>Starts Here</em></h2>
+    <a href="#" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+      Get In Touch <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+@if (posts().length) {
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="lbl">News &amp; Blog</div>
+          <h2>Our Latest News &amp; Blog</h2>
+        </div>
+        <a href="#" class="btn-line">View All Posts <i class="ph ph-arrow-right"></i></a>
+      </div>
+      <div class="blog-grid">
+        @for (post of posts(); track post.id) {
+          <div class="blog-card">
+            @if (post.imageUrl) {
+              <div class="blog-imgw">
+                <img [src]="post.imageUrl" [alt]="post.title">
+              </div>
+            }
+            <div class="blog-body">
+              <div class="blog-meta">
+                <span class="blog-mi"><i class="ph ph-user"></i> Admin</span>
+                <span class="blog-mi"><i class="ph ph-calendar"></i> {{ post.createdAt | date:'MMM d, y' }}</span>
+              </div>
+              <h3>{{ post.title }}</h3>
+              <p>{{ excerpt(post.content) }}</p>
+              <a [routerLink]="['/blog', post.id]" class="blog-more">Read More <i class="ph ph-arrow-right"></i></a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

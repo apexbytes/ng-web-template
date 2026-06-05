@@ -1,1 +1,122 @@
-<p>header.component works!</p>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-l">
+      <span class="tb-item"><i class="ph ph-map-pin"></i> Nita Avenue, Del Judor, eMalahleni, Witbank, 1045</span>
+      <span class="tb-item"><i class="ph ph-clock"></i> Mon – Fri: 8:00am – 5:00pm</span>
+    </div>
+    <div class="topbar-r">
+      <span class="tb-item"><i class="ph ph-envelope"></i> info&#64;geomapping.co.za</span>
+      <div class="tb-soc">
+        <a href="#"><i class="ph ph-facebook-logo"></i></a>
+        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+        <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="container">
+    <a routerLink="/" class="logo">
+      <img src="/geomapping.png" alt="GeoMapping" priority>
+    </a>
+    <nav>
+      <a class="nav-a" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="nav-a" routerLink="/about" routerLinkActive="active">About</a>
+      <div class="nav-drop-wrap">
+        <a class="nav-a" href="#services">Services <i class="ph ph-caret-down"></i></a>
+        <div class="nav-dropdown">
+          <a routerLink="/mining-surveying-planning" routerLinkActive="active">Mining Surveying &amp; Planning</a>
+          <a routerLink="/aerial-survey-gis" routerLinkActive="active">Aerial Survey &amp; GIS</a>
+          <a routerLink="/engineering-construction-survey" routerLinkActive="active">Engineering &amp; Construction Survey</a>
+          <a routerLink="/aerial-security-solutions" routerLinkActive="active">Aerial Security Solutions</a>
+          <a routerLink="/community-programs" routerLinkActive="active">Community Programs</a>
+        </div>
+      </div>
+      <a class="nav-a" routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a class="nav-a" routerLink="/blog" routerLinkActive="active">Blog <i class="ph ph-caret-down"></i></a>
+      <a class="nav-a" routerLink="/auth/login" routerLinkActive="active">Login</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="hdr-phone">
+        <div class="hdr-ph-icon"><i class="ph ph-phone"></i></div>
+        <div class="hdr-ph-text">
+          <small>Call Anytime</small>
+          <strong>+27 (0)72 944 5830</strong>
+        </div>
+      </div>
+      <a routerLink="/contact" class="btn-fill">Get In Touch</a>
+      <button class="hdr-search" [class.active]="searchOpen()" (click)="toggleSearch()" aria-label="Toggle search" [attr.aria-expanded]="searchOpen()"><i class="ph ph-magnifying-glass"></i></button>
+      <button class="hamburger" #hamburger [class.open]="menuOpen()" [attr.aria-expanded]="menuOpen()" (click)="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search Panel -->
+  <div class="search-panel" [class.open]="searchOpen()" role="search" aria-label="Site search">
+    <div class="container">
+      <div class="search-bar-wrap">
+        <div class="search-input-group">
+          <i class="ph ph-magnifying-glass search-icon"></i>
+          <input
+            #searchInput
+            type="search"
+            class="search-input"
+            placeholder="Search services, projects, news…"
+            [value]="searchQuery()"
+            (input)="onSearchInput($event)"
+            (keydown.enter)="closeSearch()"
+            autocomplete="off"
+            aria-label="Search"
+          >
+          @if (searchQuery()) {
+            <button class="search-clear" (click)="searchQuery.set('')" aria-label="Clear">
+              <i class="ph ph-x"></i>
+            </button>
+          }
+        </div>
+        <button class="search-btn" type="button">
+          Search <i class="ph ph-arrow-right"></i>
+        </button>
+      </div>
+      <div class="search-quick">
+        <span class="search-quick-label">Quick links:</span>
+        <a routerLink="/mining-surveying-planning" (click)="closeSearch()">Mining Survey</a>
+        <a routerLink="/aerial-survey-gis" (click)="closeSearch()">Aerial GIS</a>
+        <a routerLink="/engineering-construction-survey" (click)="closeSearch()">Engineering</a>
+        <a routerLink="/aerial-security-solutions" (click)="closeSearch()">Security</a>
+        <a routerLink="/contact" (click)="closeSearch()">Get a Quote</a>
+      </div>
+    </div>
+    <button class="search-close-btn" (click)="closeSearch()" aria-label="Close search">
+      <i class="ph ph-x"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Search backdrop -->
+@if (searchOpen()) {
+  <div class="search-overlay" (click)="closeSearch()" aria-hidden="true"></div>
+}
+
+<!-- Mobile Navigation Drawer -->
+<nav class="mobile-nav" #mobileNav [class.open]="menuOpen()" aria-label="Mobile navigation">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="ph ph-house"></i> Home</a>
+  <a routerLink="/about" routerLinkActive="active"><i class="ph ph-info"></i> About</a>
+  <div class="mob-drop-wrap" [class.open]="servicesOpen()">
+    <a href="#services" class="mob-drop-toggle" (click)="toggleServices($event)"><span><i class="ph ph-hard-hat"></i> Services</span><i class="ph ph-caret-down mob-drop-caret"></i></a>
+    <div class="mob-dropdown">
+      <a routerLink="/mining-surveying-planning" routerLinkActive="active">Mining Surveying &amp; Planning</a>
+      <a routerLink="/aerial-survey-gis" routerLinkActive="active">Aerial Survey &amp; GIS</a>
+      <a routerLink="/engineering-construction-survey" routerLinkActive="active">Engineering &amp; Construction Survey</a>
+      <a routerLink="/aerial-security-solutions" routerLinkActive="active">Aerial Security Solutions</a>
+      <a routerLink="/community-programs" routerLinkActive="active">Community Programs</a>
+    </div>
+  </div>
+  <a routerLink="/projects" routerLinkActive="active"><i class="ph ph-map-trifold"></i> Projects</a>
+  <a routerLink="/blog" routerLinkActive="active"><i class="ph ph-newspaper"></i> Blog</a>
+  <a routerLink="/auth/login" routerLinkActive="active"><i class="ph ph-lock"></i> Login</a>
+</nav>

@@ -1,1 +1,99 @@
-<p>dashboard.component works!</p>
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Welcome back, {{ user()?.fullName }}</h1>
+    <span class="role-badge">{{ user()?.role }}</span>
+  </div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon stat-icon--orange">
+      <i class="ph ph-briefcase" aria-hidden="true"></i>
+    </div>
+    <div class="stat-body">
+      <div class="stat-value">{{ stats()?.projects ?? '—' }}</div>
+      <div class="stat-label">Total Projects</div>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon stat-icon--blue">
+      <i class="ph-duotone ph-article" aria-hidden="true"></i>
+    </div>
+    <div class="stat-body">
+      <div class="stat-value">{{ stats()?.posts ?? '—' }}</div>
+      <div class="stat-label">Total Posts</div>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon stat-icon--green">
+      <i class="ph-duotone ph-check-circle" aria-hidden="true"></i>
+    </div>
+    <div class="stat-body">
+      <div class="stat-value">{{ stats()?.published ?? '—' }}</div>
+      <div class="stat-label">Published Posts</div>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon stat-icon--purple">
+      <i class="ph-duotone ph-users-four" aria-hidden="true"></i>
+    </div>
+    <div class="stat-body">
+      <div class="stat-value">{{ stats()?.team ?? '—' }}</div>
+      <div class="stat-label">Team Members</div>
+    </div>
+  </div>
+</div>
+
+<section class="quick-links" aria-labelledby="ql-heading">
+  <h2 class="section-title" id="ql-heading">Quick Links</h2>
+  <div class="ql-grid">
+
+    <a class="ql-card" routerLink="/d/projects">
+      <div class="ql-icon ql-icon--orange">
+        <i class="ph ph-briefcase" aria-hidden="true"></i>
+      </div>
+      <div class="ql-body">
+        <div class="ql-title">Projects</div>
+        <div class="ql-desc">View and manage survey projects</div>
+      </div>
+      <i class="ph ph-arrow-right ql-arrow" aria-hidden="true"></i>
+    </a>
+
+    <a class="ql-card" routerLink="/d/posts">
+      <div class="ql-icon ql-icon--blue">
+        <i class="ph-duotone ph-article" aria-hidden="true"></i>
+      </div>
+      <div class="ql-body">
+        <div class="ql-title">Posts</div>
+        <div class="ql-desc">Create and publish blog posts</div>
+      </div>
+      <i class="ph ph-arrow-right ql-arrow" aria-hidden="true"></i>
+    </a>
+
+    <a class="ql-card" routerLink="/d/users">
+      <div class="ql-icon ql-icon--green">
+        <i class="ph-duotone ph-users-four" aria-hidden="true"></i>
+      </div>
+      <div class="ql-body">
+        <div class="ql-title">Users</div>
+        <div class="ql-desc">Manage user accounts and roles</div>
+      </div>
+      <i class="ph ph-arrow-right ql-arrow" aria-hidden="true"></i>
+    </a>
+
+    <a class="ql-card" routerLink="/d/team">
+      <div class="ql-icon ql-icon--purple">
+        <i class="ph-duotone ph-microsoft-teams-logo" aria-hidden="true"></i>
+      </div>
+      <div class="ql-body">
+        <div class="ql-title">Team</div>
+        <div class="ql-desc">Update team members and profiles</div>
+      </div>
+      <i class="ph ph-arrow-right ql-arrow" aria-hidden="true"></i>
+    </a>
+
+  </div>
+</section>

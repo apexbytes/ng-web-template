@@ -1,1 +1,146 @@
-<p>contact.component works!</p>
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/pexels-iwashere-15109992.jpg" alt="Contact GeoMapping" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Connect with Us</div>
+      <h1>Contact <em>GeoMapping</em></h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Contact Us</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-sec">
+  <div class="container">
+    <!-- Contact Info -->
+    <div>
+      <div class="lbl">Get In Touch</div>
+      <h2 class="contact-info-h2">Have a Project?<br>Let's Discuss It.</h2>
+      <p class="contact-info-p">GeoMapping Pty Ltd is ready to support your mining, engineering, or geospatial needs across South Africa. Fill out the form or reach out via our branch offices below.</p>
+
+      <div class="contact-details">
+        <div class="contact-detail-item">
+          <div class="cd-icon"><i class="ph ph-map-pin"></i></div>
+          <div class="cd-text">
+            <h4>Our Offices</h4>
+            <p><strong>Mpumalanga:</strong> Nita Ave, Del Judor, eMalahleni, 1045</p>
+            <p><strong>KwaZulu-Natal:</strong> 1 Village Way, Sunningdale, Durban 4000</p>
+          </div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="cd-icon"><i class="ph ph-phone"></i></div>
+          <div class="cd-text">
+            <h4>Call Us</h4>
+            <p>Office: +27 (0)13 880 2324</p>
+            <p>WhatsApp: +27 (0)72 944 5830</p>
+          </div>
+        </div>
+        <div class="contact-detail-item">
+          <div class="cd-icon"><i class="ph ph-envelope"></i></div>
+          <div class="cd-text">
+            <h4>Email Us</h4>
+            <p>info&#64;geomapping.co.za</p>
+            <p>support&#64;geomapping.co.za</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-card">
+      <h3>Send a Message</h3>
+      @if (submitted()) {
+        <div class="form-success" role="alert">
+          <i class="ph ph-check-circle"></i>
+          <p>Thank you! Our team will get back to you soon.</p>
+        </div>
+      } @else {
+        @if (serverError()) {
+          <div class="form-error-banner" role="alert">
+            <i class="ph ph-warning"></i>
+            <p>{{ serverError() }}</p>
+          </div>
+        }
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fullname">Fullname</label>
+              <input type="text" id="fullname" formControlName="fullname" placeholder="Enter your full name"
+                [class.input-error]="form.controls.fullname.invalid && form.controls.fullname.touched">
+              @if (form.controls.fullname.invalid && form.controls.fullname.touched) {
+                <span class="field-error" role="alert">Full name is required.</span>
+              }
+              @if (validationErrors()['name']?.length) {
+                <span class="field-error" role="alert">{{ validationErrors()['name'][0] }}</span>
+              }
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" formControlName="phone" placeholder="e.g. +27 72 000 0000"
+                [class.input-error]="form.controls.phone.invalid && form.controls.phone.touched">
+              @if (form.controls.phone.invalid && form.controls.phone.touched) {
+                <span class="field-error" role="alert">Phone number is required.</span>
+              }
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" formControlName="email" placeholder="Enter your email"
+                [class.input-error]="form.controls.email.invalid && form.controls.email.touched">
+              @if (form.controls.email.invalid && form.controls.email.touched) {
+                <span class="field-error" role="alert">A valid email address is required.</span>
+              }
+              @if (validationErrors()['email']?.length) {
+                <span class="field-error" role="alert">{{ validationErrors()['email'][0] }}</span>
+              }
+            </div>
+            <div class="form-group">
+              <label for="city">City/Town</label>
+              <input type="text" id="city" formControlName="city" placeholder="Enter your city"
+                [class.input-error]="form.controls.city.invalid && form.controls.city.touched">
+              @if (form.controls.city.invalid && form.controls.city.touched) {
+                <span class="field-error" role="alert">City is required.</span>
+              }
+            </div>
+            <div class="form-group full">
+              <label>Select one or more services</label>
+              <div class="services-checkboxes" formArrayName="services">
+                @for (option of serviceOptions; track option.value; let i = $index) {
+                  <label class="checkbox-item">
+                    <input type="checkbox" [formControlName]="i"> {{ option.label }}
+                  </label>
+                }
+              </div>
+            </div>
+            <div class="form-group full">
+              <label for="message">Message (Optional)</label>
+              <textarea id="message" formControlName="message" rows="4" placeholder="Tell us more about your project..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-fill form-submit-btn" [disabled]="loading()" [attr.aria-busy]="loading()">
+            @if (loading()) {
+              Sending… <i class="ph ph-circle-notch"></i>
+            } @else {
+              Send Message <i class="ph ph-paper-plane-tilt"></i>
+            }
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="container">
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-d">Years of Experience</div></div>
+    <div class="stat"><div class="stat-n">SACAA</div><div class="stat-d">Certified Operations</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-d">Branch Offices</div></div>
+    <div class="stat"><div class="stat-n">100%</div><div class="stat-d">Precision Guaranteed</div></div>
+  </div>
+</section>

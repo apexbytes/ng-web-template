@@ -1,0 +1,11 @@
+.logo {
+  display: inline-block;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: 60px;
+  object-fit: contain;
+  object-position: left center;
+}

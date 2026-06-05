@@ -1,0 +1,20 @@
+.svc-img-w img {
+  transition: opacity .4s, transform .4s;
+}
+
+.svc-img-w img.fading {
+  opacity: 0;
+  transform: scale(1.04);
+}
+
+.testi-av-img {
+  overflow: hidden;
+  padding: 0;
+}
+
+.testi-av-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
