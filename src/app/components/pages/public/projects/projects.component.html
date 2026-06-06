@@ -1,0 +1,125 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/aerial_survey.jpg" alt="" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">Our Work</div>
+      <h1>Projects</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Projects</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS LIST ===== -->
+<section class="projects-page">
+  <div class="container">
+
+    <!-- Filter bar -->
+    <div class="proj-filters" role="tablist" aria-label="Filter projects by status">
+      @for (f of filters; track f.value) {
+        <button
+          role="tab"
+          [attr.aria-selected]="activeFilter() === f.value"
+          [class.active]="activeFilter() === f.value"
+          (click)="setFilter(f.value)"
+        >{{ f.label }}</button>
+      }
+    </div>
+
+    <!-- Loading skeleton -->
+    @if (projectsResource.isLoading()) {
+      <div class="proj-grid" aria-busy="true" aria-label="Loading projects">
+        @for (n of skeletons; track n) {
+          <div class="proj-card proj-skeleton" aria-hidden="true">
+            <div class="proj-skel-img"></div>
+            <div class="proj-skel-body">
+              <div class="proj-skel-bar short"></div>
+              <div class="proj-skel-bar"></div>
+              <div class="proj-skel-bar medium"></div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else if (projects().length) {
+
+      <!-- Project grid -->
+      <div class="proj-grid">
+        @for (project of projects(); track project.id) {
+          <article class="proj-card">
+            <div class="proj-imgw">
+              @if (project.imageUrl) {
+                <img [src]="project.imageUrl" [alt]="project.title">
+              } @else {
+                <img src="images/aerial_survey.jpg" [alt]="project.title">
+              }
+              @if (project.tag) {
+                <div class="proj-cat">{{ tagLabel(project.tag) }}</div>
+              }
+              <div class="proj-ov" aria-hidden="true">
+                <div class="proj-ov-ic"><i class="ph ph-arrow-up-right"></i></div>
+              </div>
+            </div>
+            <div class="proj-info">
+              <h3>{{ project.title }}</h3>
+              <time [dateTime]="project.createdAt">{{ project.createdAt | date:'MMM d, y' }}</time>
+              <div>
+                <a [routerLink]="['/projects', project.id]" class="proj-lnk">
+                  Explore Project <i class="ph ph-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+
+      <!-- Pagination -->
+      @if (totalPages() > 1) {
+        <nav class="proj-pagination" aria-label="Projects pagination">
+          <button
+            class="pg-btn"
+            [disabled]="page() === 1"
+            (click)="setPage(page() - 1)"
+            aria-label="Previous page"
+          ><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+
+          @for (p of pageNumbers(); track p) {
+            <button
+              class="pg-btn"
+              [class.active]="page() === p"
+              [attr.aria-current]="page() === p ? 'page' : null"
+              (click)="setPage(p)"
+            >{{ p }}</button>
+          }
+
+          <button
+            class="pg-btn"
+            [disabled]="page() === totalPages()"
+            (click)="setPage(page() + 1)"
+            aria-label="Next page"
+          ><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+        </nav>
+      }
+
+    } @else {
+
+      <!-- Empty state -->
+      <div class="proj-empty" role="status">
+        <i class="ph ph-folder-open" aria-hidden="true"></i>
+        <h3>No projects found</h3>
+        <p>There are no projects in this category yet. Check back soon.</p>
+        @if (activeFilter() !== 'all') {
+          <button class="btn-fill" (click)="setFilter('all')">
+            View All Projects
+          </button>
+        }
+      </div>
+
+    }
+
+  </div>
+</section>

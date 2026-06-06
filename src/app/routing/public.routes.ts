@@ -48,9 +48,19 @@ export const PUBLIC_ROUTES: Routes = [
         title: 'Community Programs',
       },
       {
+        path: 'blog',
+        loadComponent: () => import('@components/pages/public/blogs/blogs.component').then(m => m.BlogsComponent),
+        title: 'Blog',
+      },
+      {
         path: 'blog/:id',
         loadComponent: () => import('@components/pages/public/blog/blog.component').then(m => m.BlogComponent),
         title: 'Blog',
+      },
+      {
+        path: 'projects',
+        loadComponent: () => import('@components/pages/public/projects/projects.component').then(m => m.ProjectsComponent),
+        title: 'Projects',
       },
       {
         path: 'projects/:id',

@@ -1,0 +1,109 @@
+<!-- ===== PAGE BANNER ===== -->
+<section class="page-banner">
+  <img src="images/aerial_survey.jpg" alt="" class="page-banner-bg">
+  <div class="page-banner-ov"></div>
+  <div class="container">
+    <div class="page-banner-body">
+      <div class="lbl">News &amp; Blog</div>
+      <h1>Latest Articles</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a routerLink="/">Home</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Blog</span>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG LIST ===== -->
+<section class="blogs-page">
+  <div class="container">
+
+    <!-- Loading skeleton -->
+    @if (postsResource.isLoading()) {
+      <div class="blog-grid" aria-busy="true" aria-label="Loading articles">
+        @for (n of skeletons; track n) {
+          <div class="blog-card blog-skeleton" aria-hidden="true">
+            <div class="blog-skel-img"></div>
+            <div class="blog-skel-body">
+              <div class="blog-skel-bar short"></div>
+              <div class="blog-skel-bar"></div>
+              <div class="blog-skel-bar medium"></div>
+              <div class="blog-skel-bar short"></div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else if (posts().length) {
+
+      <!-- Blog grid -->
+      <div class="blog-grid">
+        @for (post of posts(); track post.id) {
+          <article class="blog-card">
+            @if (post.imageUrl) {
+              <div class="blog-imgw">
+                <img [src]="post.imageUrl" [alt]="post.title">
+              </div>
+            }
+            <div class="blog-body">
+              <div class="blog-meta">
+                <span class="blog-mi"><i class="ph ph-user" aria-hidden="true"></i> Admin</span>
+                <span class="blog-mi">
+                  <i class="ph ph-calendar" aria-hidden="true"></i>
+                  <time [dateTime]="post.createdAt">{{ post.createdAt | date:'MMM d, y' }}</time>
+                </span>
+              </div>
+              <h3>{{ post.title }}</h3>
+              <p>{{ excerpt(post.content) }}</p>
+              <a [routerLink]="['/blog', post.id]" class="blog-more">
+                Read More <i class="ph ph-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+        }
+      </div>
+
+      <!-- Pagination -->
+      @if (totalPages() > 1) {
+        <nav class="blogs-pagination" aria-label="Blog pagination">
+          <button
+            class="pg-btn"
+            [disabled]="page() === 1"
+            (click)="setPage(page() - 1)"
+            aria-label="Previous page"
+          ><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+
+          @for (p of pageNumbers(); track p) {
+            <button
+              class="pg-btn"
+              [class.active]="page() === p"
+              [attr.aria-current]="page() === p ? 'page' : null"
+              (click)="setPage(p)"
+            >{{ p }}</button>
+          }
+
+          <button
+            class="pg-btn"
+            [disabled]="page() === totalPages()"
+            (click)="setPage(page() + 1)"
+            aria-label="Next page"
+          ><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+        </nav>
+      }
+
+    } @else {
+
+      <!-- Empty state -->
+      <div class="blogs-empty" role="status">
+        <i class="ph ph-newspaper" aria-hidden="true"></i>
+        <h3>No articles yet</h3>
+        <p>We haven't published any articles yet. Check back soon for updates.</p>
+        <a routerLink="/" class="btn-fill">
+          Back to Home <i class="ph ph-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    }
+
+  </div>
+</section>
