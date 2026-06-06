@@ -104,45 +104,65 @@
 </section>
 
 <!-- ===== TEAM ===== -->
-<section class="team" id="team">
-  <div class="container">
-    <div class="sec-head">
-      <div>
-        <div class="lbl">Our Team</div>
-        <h2>Meet our expert team</h2>
+@if (teamLoading()) {
+  <section class="team" id="team" aria-busy="true" aria-label="Loading team members">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="lbl">Our Team</div>
+          <h2>Meet our expert team</h2>
+        </div>
+      </div>
+      <div class="team-grid">
+        @for (_ of [1,2,3]; track $index) {
+          <div class="team-card team-card--skeleton" aria-hidden="true">
+            <div class="team-imgw"></div>
+            <div class="team-inf">
+              <div class="skeleton-line" style="width:60%;height:1em;"></div>
+              <div class="skeleton-line" style="width:40%;height:.8em;margin-top:6px;"></div>
+            </div>
+          </div>
+        }
       </div>
     </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-imgw">
-          <img src="images/pexels-kokorevas-20178416.jpg" alt="Edward Johnson" style="object-position:30% center;">
-        </div>
-        <div class="team-inf">
-          <h3>Edward Johnson</h3>
-          <span>Chief Engineer</span>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-imgw">
-          <img src="images/pexels-printexstar-11680715.jpg" alt="Mark Williams" style="object-position:center 40%;">
-        </div>
-        <div class="team-inf">
-          <h3>Mark Williams</h3>
-          <span>Site Manager</span>
+  </section>
+} @else if (team().length) {
+  <section class="team" id="team">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="lbl">Our Team</div>
+          <h2>Meet our expert team</h2>
         </div>
       </div>
-      <div class="team-card">
-        <div class="team-imgw">
-          <img src="images/pexels-davidelocatelli-2383650.jpg" alt="Amy Phelps" style="object-position:center 30%;">
-        </div>
-        <div class="team-inf">
-          <h3>Amy Phelps</h3>
-          <span>Project Director</span>
-        </div>
+      <div class="team-grid">
+        @for (member of team(); track member.id) {
+          <div class="team-card">
+            <div class="team-imgw">
+              @if (member.imageUrl) {
+                <img [src]="member.imageUrl" [alt]="member.name">
+              }
+              @if (member.socials?.length) {
+                <div class="team-soc">
+                  @for (social of member.socials!; track social.platform) {
+                    <a [href]="social.link" class="team-sb" target="_blank" rel="noopener noreferrer"
+                       [attr.aria-label]="member.name + ' on ' + social.platform">
+                      <i [class]="socialIcon(social.platform)" aria-hidden="true"></i>
+                    </a>
+                  }
+                </div>
+              }
+            </div>
+            <div class="team-inf">
+              <h3>{{ member.name }}</h3>
+              <span>{{ member.title }}</span>
+            </div>
+          </div>
+        }
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}
 
 <!-- ===== STATS ===== -->
 <section class="stats">

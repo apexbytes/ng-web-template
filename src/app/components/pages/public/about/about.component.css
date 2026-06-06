@@ -238,6 +238,23 @@
   line-height: 1.75;
 }
 
+/* ===== SKELETON ===== */
+.team-card--skeleton .team-imgw {
+  background: var(--border);
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-line {
+  background: var(--border);
+  border-radius: 4px;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .45; }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .story .container { gap: 40px; }

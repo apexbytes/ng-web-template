@@ -19,23 +19,23 @@
         <div class="ftr-col">
           <h4>Quick Links</h4>
           <ul class="ftr-links">
-            <li><a href="#"><i class="ph ph-caret-right"></i> Home</a></li>
-            <li><a href="#about"><i class="ph ph-caret-right"></i> About Us</a></li>
-            <li><a href="#services"><i class="ph ph-caret-right"></i> Our Services</a></li>
-            <li><a href="#projects"><i class="ph ph-caret-right"></i> Recent Projects</a></li>
-            <li><a href="#blog"><i class="ph ph-caret-right"></i> Blog</a></li>
-            <li><a href="#"><i class="ph ph-caret-right"></i> Contact Us</a></li>
+            <li><a routerLink="/"><i class="ph ph-caret-right"></i> Home</a></li>
+            <li><a routerLink="/about"><i class="ph ph-caret-right"></i> About Us</a></li>
+            <li><a routerLink="/" fragment="services"><i class="ph ph-caret-right"></i> Our Services</a></li>
+            <li><a routerLink="/" fragment="projects"><i class="ph ph-caret-right"></i> Recent Projects</a></li>
+            <li><a routerLink="/" fragment="blog"><i class="ph ph-caret-right"></i> Blog</a></li>
+            <li><a routerLink="/contact"><i class="ph ph-caret-right"></i> Contact Us</a></li>
           </ul>
         </div>
         <div class="ftr-col">
           <h4>Services</h4>
           <ul class="ftr-links">
-            <li><a href="#"><i class="ph ph-caret-right"></i> Mining Surveying &amp; Planning</a></li>
-            <li><a href="#"><i class="ph ph-caret-right"></i> Aerial Survey &amp; GIS</a></li>
-            <li><a href="#"><i class="ph ph-caret-right"></i> Engineering Survey</a></li>
-            <li><a href="#"><i class="ph ph-caret-right"></i> Aerial Security Solutions</a></li>
-            <li><a href="#"><i class="ph ph-caret-right"></i> Community Programs</a></li>
-            <li><a href="#"><i class="ph ph-caret-right"></i> UAV / Drone Services</a></li>
+            <li><a routerLink="/mining-surveying-planning"><i class="ph ph-caret-right"></i> Mining Surveying &amp; Planning</a></li>
+            <li><a routerLink="/aerial-survey-gis"><i class="ph ph-caret-right"></i> Aerial Survey &amp; GIS</a></li>
+            <li><a routerLink="/engineering-construction-survey"><i class="ph ph-caret-right"></i> Engineering Survey</a></li>
+            <li><a routerLink="/aerial-security-solutions"><i class="ph ph-caret-right"></i> Aerial Security Solutions</a></li>
+            <li><a routerLink="/community-programs"><i class="ph ph-caret-right"></i> Community Programs</a></li>
+            <li><a routerLink="/aerial-survey-gis"><i class="ph ph-caret-right"></i> UAV / Drone Services</a></li>
           </ul>
         </div>
         <div class="ftr-col">
@@ -64,7 +64,7 @@
   </div>
   <div class="container">
     <div class="footer-bot">
-      <span>&copy; 2024 <a href="#">GeoMapping Pty Ltd</a>. All rights reserved. Website powered by APPLISUM.</span>
+      <span>&copy; {{ currentYear }} <a routerLink="/">GeoMapping Pty Ltd</a>. All rights reserved. Website powered by APPLISUM.</span>
       <div class="ftr-bot-lnks">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
