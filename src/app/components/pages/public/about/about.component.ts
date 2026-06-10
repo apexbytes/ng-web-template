@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, resource } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { SeoService } from '@core/services/seo.service';
 import { TeamService } from '@core/services/team.service';
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

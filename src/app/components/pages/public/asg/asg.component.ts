@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo.service';
 
 @Component({
   selector: 'app-asg',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './asg.component.html',
   styleUrl: './asg.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo.service';
 
 @Component({
   selector: 'app-ass',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './ass.component.html',
   styleUrl: './ass.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

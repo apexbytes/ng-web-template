@@ -606,6 +606,109 @@ nav {
   color: var(--orange);
 }
 
+/* ===== HERO CAROUSEL ===== */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .8s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero-slide .hero-bg {
+  transform: scale(1.08);
+  transition: transform 7s ease-out;
+}
+
+.hero-slide.active .hero-bg {
+  transform: scale(1);
+}
+
+.hero-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  background: rgba(26, 26, 26, .35);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color .25s, border-color .25s, color .25s;
+}
+
+.hero-nav:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+
+.hero-nav:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.hero-prev {
+  left: 28px;
+}
+
+.hero-next {
+  right: 28px;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 12px;
+}
+
+.hero-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, .6);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color .25s, border-color .25s, width .25s, border-radius .25s;
+}
+
+.hero-dot.active {
+  width: 30px;
+  border-radius: 6px;
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.hero-dot:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide .hero-bg {
+    transition: none;
+  }
+}
+
 /* ===== ABOUT ===== */
 .about {
   padding: 110px 0 140px;
@@ -2047,6 +2150,14 @@ nav {
   .hero-body {
     padding: 72px 0;
     max-width: 100%;
+  }
+
+  .hero-nav {
+    display: none;
+  }
+
+  .hero-dots {
+    bottom: 20px;
   }
 
   /* About — single column, image on top */

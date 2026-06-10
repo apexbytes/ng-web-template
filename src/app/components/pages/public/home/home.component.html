@@ -1,23 +1,53 @@
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <img src="images/aerial_survey.jpg" alt="Aerial survey operations" class="hero-bg">
-  <div class="hero-ov"></div>
-  <div class="container">
-    <div class="hero-body">
-      <div class="hero-lbl">
-        <div class="hero-lbl-line"></div>
-        WHO ARE WE
-      </div>
-      <h1 >South Africa's Leading<br><em>Geospatial Solutions Provider</em></h1>
-      <p class="hero-sub">GeoMapping Pty Ltd is the top provider of advanced Mining Surveying, Planning, and Geospatial solutions in South Africa, leveraging over five years of industry experience and a highly qualified, SACAA-certified team.</p>
-      <div class="hero-acts">
-        <a href="/about" class="btn-fill">Discover More <i class="ph ph-arrow-right"></i></a>
-        <div class="hero-play-btn">
-          <div class="hero-circle"><i class="ph ph-play"></i></div>
-          Watch Video
+<!-- ===== HERO CAROUSEL ===== -->
+<section class="hero" role="region" aria-roledescription="carousel" aria-label="GeoMapping highlights">
+  @for (slide of heroSlides; track slide.img; let i = $index) {
+    <div
+      class="hero-slide"
+      role="group"
+      aria-roledescription="slide"
+      [attr.aria-label]="'Slide ' + (i + 1) + ' of ' + heroSlides.length"
+      [attr.aria-hidden]="heroIndex() !== i"
+      [class.active]="heroIndex() === i">
+      <img [src]="slide.img" [alt]="slide.alt" class="hero-bg">
+      <div class="hero-ov"></div>
+      <div class="container">
+        <div class="hero-body">
+          <div class="hero-lbl">
+            <div class="hero-lbl-line"></div>
+            {{ slide.label }}
+          </div>
+          <h1>{{ slide.titleLead }}<br><em>{{ slide.titleEm }}</em></h1>
+          <p class="hero-sub">{{ slide.sub }}</p>
+          <div class="hero-acts">
+            <a routerLink="/about" class="btn-fill">Discover More <i class="ph ph-arrow-right"></i></a>
+            <div class="hero-play-btn">
+              <div class="hero-circle"><i class="ph ph-play"></i></div>
+              Watch Video
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  }
+
+  <button type="button" class="hero-nav hero-prev" (click)="prevHeroSlide()" aria-label="Previous slide">
+    <i class="ph ph-caret-left"></i>
+  </button>
+  <button type="button" class="hero-nav hero-next" (click)="nextHeroSlide()" aria-label="Next slide">
+    <i class="ph ph-caret-right"></i>
+  </button>
+
+  <div class="hero-dots" role="tablist" aria-label="Choose slide">
+    @for (slide of heroSlides; track slide.img; let i = $index) {
+      <button
+        type="button"
+        class="hero-dot"
+        role="tab"
+        [class.active]="heroIndex() === i"
+        [attr.aria-selected]="heroIndex() === i"
+        [attr.aria-label]="'Go to slide ' + (i + 1)"
+        (click)="goToHeroSlide(i)"></button>
+    }
   </div>
 </section>
 
@@ -139,7 +169,7 @@
 <section class="why" id="why">
   <div class="container">
     <div class="why-img-w">
-      <img src="images/land_survey.jpg" alt="GeoMapping drilling equipment">
+      <img src="images/4695a762-5c1c-488a-9159-8116457ac114.jpg" alt="GeoMapping drilling equipment">
       <div class="why-badge">
         <strong>SACAA</strong>
         Certified Team
@@ -191,7 +221,7 @@
           <div class="lbl">Projects</div>
           <h2>Explore recent projects</h2>
         </div>
-        <a href="#" class="btn-line">See All Projects <i class="ph ph-arrow-right"></i></a>
+        <a routerLink="/projects" class="btn-line">See All Projects <i class="ph ph-arrow-right"></i></a>
       </div>
       <div class="proj-grid">
         @for (project of projects(); track project.id) {
@@ -234,7 +264,7 @@
       <div class="lbl">Contact Us</div>
       <h2>Have a project in mind?</h2>
     </div>
-    <a href="#" class="btn-fill" style="font-size:12px;padding:18px 36px;">
+    <a routerLink="/contact" class="btn-fill" style="font-size:12px;padding:18px 36px;">
       Contact Us <i class="ph ph-arrow-right"></i>
     </a>
   </div>
@@ -287,7 +317,7 @@
           <div class="lbl">Our Team</div>
           <h2>Meet our expert team</h2>
         </div>
-        <a href="#" class="btn-line">See All Team <i class="ph ph-arrow-right"></i></a>
+        <a routerLink="/about" class="btn-line">See All Team <i class="ph ph-arrow-right"></i></a>
       </div>
       <div class="team-grid">
         @for (member of team(); track member.id) {
@@ -326,7 +356,7 @@
   <div class="container cta-ban-inner">
     <div class="lbl">Get Started</div>
     <h2>Your Survey <em>Starts Here</em></h2>
-    <a href="#" class="btn-fill" style="font-size:12px;padding:18px 40px;">
+    <a routerLink="/contact" class="btn-fill" style="font-size:12px;padding:18px 40px;">
       Get In Touch <i class="ph ph-arrow-right"></i>
     </a>
   </div>
@@ -341,7 +371,7 @@
           <div class="lbl">News &amp; Blog</div>
           <h2>Our Latest News &amp; Blog</h2>
         </div>
-        <a href="#" class="btn-line">View All Posts <i class="ph ph-arrow-right"></i></a>
+        <a routerLink="/blog" class="btn-line">View All Posts <i class="ph ph-arrow-right"></i></a>
       </div>
       <div class="blog-grid">
         @for (post of posts(); track post.id) {

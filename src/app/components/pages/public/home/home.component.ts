@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   computed,
   inject,
   resource,
@@ -25,6 +26,15 @@ interface ServiceItem {
   route: string;
 }
 
+interface HeroSlide {
+  img: string;
+  alt: string;
+  label: string;
+  titleLead: string;
+  titleEm: string;
+  sub: string;
+}
+
 @Component({
   selector: 'app-home',
   imports: [RouterLink, DatePipe],
@@ -35,10 +45,30 @@ interface ServiceItem {
 export class HomeComponent {
   private readonly seoService = inject(SeoService);
   private readonly document = inject(DOCUMENT);
+  private readonly destroyRef = inject(DestroyRef);
   private readonly teamService = inject(TeamService);
   private readonly projectsService = inject(ProjectsService);
   private readonly postsService = inject(PostsService);
   private readonly testimonialsService = inject(TestimonialsService);
+
+  readonly heroSlides: HeroSlide[] = [
+    {
+      img: 'images/aerial_survey.jpg',
+      alt: 'Aerial survey operations',
+      label: 'WHO ARE WE',
+      titleLead: "South Africa's Leading",
+      titleEm: 'Geospatial Solutions Provider',
+      sub: 'GeoMapping Pty Ltd is the top provider of advanced Mining Surveying, Planning, and Geospatial solutions in South Africa, leveraging over five years of industry experience and a highly qualified, SACAA-certified team.',
+    },
+    {
+      img: 'images/2d7398e1-8ff9-4f75-9713-891b7eb1f3a5.jpg',
+      alt: 'GeoMapping drone and survey field operations',
+      label: 'WHAT WE OFFER',
+      titleLead: 'Precision Mining &',
+      titleEm: 'Aerial Survey Expertise',
+      sub: 'From LiDAR and drone photogrammetry to GIS and engineering surveys, our SACAA-certified team delivers centimetre-accurate intelligence for mining, construction, and infrastructure projects nationwide.',
+    },
+  ];
 
   readonly services: ServiceItem[] = [
     {
@@ -83,12 +113,30 @@ export class HomeComponent {
     },
   ];
 
+  readonly heroIndex = signal(0);
+  readonly activeHeroSlide = computed(() => this.heroSlides[this.heroIndex()]);
+
   constructor() {
     this.seoService.set({
       title: 'Mining Surveying, Aerial & Geospatial Solutions in South Africa',
       description: "GeoMapping Pty Ltd is South Africa's leading provider of mining surveying, aerial survey & GIS, engineering survey, and drone security solutions. SACAA-certified team with 5+ years of experience.",
       keywords: 'mining surveying South Africa, aerial survey GIS, drone survey, LiDAR mapping, geospatial solutions, SACAA certified, orthophotography, UAV survey',
     });
+
+    const timer = setInterval(() => this.nextHeroSlide(), 6000);
+    this.destroyRef.onDestroy(() => clearInterval(timer));
+  }
+
+  nextHeroSlide(): void {
+    this.heroIndex.update(i => (i + 1) % this.heroSlides.length);
+  }
+
+  prevHeroSlide(): void {
+    this.heroIndex.update(i => (i - 1 + this.heroSlides.length) % this.heroSlides.length);
+  }
+
+  goToHeroSlide(index: number): void {
+    this.heroIndex.set(index);
   }
 
   readonly activeIndex = signal(0);
@@ -112,11 +160,18 @@ export class HomeComponent {
     loader: () => firstValueFrom(this.testimonialsService.getAll()),
   });
 
-  readonly team = computed(() => this.teamResource.value()?.data ?? []);
-  readonly projects = computed(() => this.projectsResource.value()?.data ?? []);
-  readonly posts = computed(() => this.postsResource.value()?.data ?? []);
+  readonly team = computed(() =>
+    this.teamResource.hasValue() ? this.teamResource.value().data ?? [] : []
+  );
+  readonly projects = computed(() =>
+    this.projectsResource.hasValue() ? this.projectsResource.value().data ?? [] : []
+  );
+  readonly posts = computed(() =>
+    this.postsResource.hasValue() ? this.postsResource.value().data ?? [] : []
+  );
   readonly testimonials = computed(() =>
-    (this.testimonialsResource.value()?.data ?? []).filter(t => t.isActive)
+    (this.testimonialsResource.hasValue() ? this.testimonialsResource.value().data ?? [] : [])
+      .filter(t => t.isActive)
   );
 
   selectService(index: number): void {

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SeoService } from '@core/services/seo.service';
 
 @Component({
   selector: 'app-msp',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './msp.component.html',
   styleUrl: './msp.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
