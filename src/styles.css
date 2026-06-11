@@ -516,7 +516,7 @@ nav {
 .hero-ov {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(26, 26, 26, .98) 36%, rgba(26, 26, 26, .55) 64%, rgba(26, 26, 26, .12) 100%);
+  background: linear-gradient(100deg, rgba(26, 26, 26, .88) 36%, rgba(26, 26, 26, .55) 64%, rgba(26, 26, 26, .12) 100%);
 }
 
 .hero-body {

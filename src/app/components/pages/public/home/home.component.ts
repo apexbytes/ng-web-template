@@ -68,6 +68,14 @@ export class HomeComponent {
       titleEm: 'Aerial Survey Expertise',
       sub: 'From LiDAR and drone photogrammetry to GIS and engineering surveys, our SACAA-certified team delivers centimetre-accurate intelligence for mining, construction, and infrastructure projects nationwide.',
     },
+    {
+      img: 'images/274d12af-2090-4581-8ad7-3c55e20c3afe.jpg',
+      alt: 'GeoMapping geospatial survey operations',
+      label: 'WHY CHOOSE US',
+      titleLead: 'Trusted Geospatial',
+      titleEm: 'Intelligence You Can Rely On',
+      sub: 'Backed by a SACAA-certified team and proven industry experience, GeoMapping Pty Ltd combines cutting-edge technology with rigorous quality standards to deliver dependable, accurate, and compliant survey solutions.',
+    },
   ];
 
   readonly services: ServiceItem[] = [
